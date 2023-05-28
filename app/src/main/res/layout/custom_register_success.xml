@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:layout_margin="24dp"
+    android:background="@drawable/custom_otp_unfocus"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Đăng xuất"
+        android:textColor="@color/darkBlue"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="Đăng ký tài khoản thành thành công."
+        android:textColor="@color/grey"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btn_register_cussess"
+        android:layout_marginTop="30dp"
+        android:text="Đăng xuất"
+        android:textAllCaps="true"
+        android:fontFamily="@font/roboto_medium"
+        android:minWidth="150dp"
+        android:layout_gravity="center"
+        android:background="@drawable/custom_button_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

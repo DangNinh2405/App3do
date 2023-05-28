@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:background="@drawable/bg_3x"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_back_white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Đăng Ký"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/custom_bg_body"
+        android:paddingTop="50dp">
+
+        <LinearLayout
+            android:id="@+id/lnl_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/etxt_referral_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/custom_etxt_register"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Mã giới thiệu"
+                android:minHeight="48dp"
+                android:paddingLeft="24dp"
+                android:textColor="#213140"
+                android:textColorHint="#A7A7A7"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/etxt_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/custom_etxt_register"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Họ và tên"
+                android:minHeight="48dp"
+                android:paddingLeft="24dp"
+                android:textColor="#213140"
+                android:textColorHint="#A7A7A7"
+                android:textSize="16sp" />
+
+            <EditText
+                android:inputType="phone"
+                android:id="@+id/etxt_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/custom_etxt_register"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Số điện thoại"
+                android:minHeight="48dp"
+                android:paddingLeft="24dp"
+                android:textColor="#213140"
+                android:textColorHint="#A7A7A7"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/etxt_password"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/custom_etxt_register"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Mật khẩu"
+                android:minHeight="48dp"
+                android:paddingLeft="24dp"
+                android:textColor="#213140"
+                android:textColorHint="#A7A7A7"
+                android:textSize="16sp" />
+
+            <EditText
+                android:inputType="textPassword"
+                android:id="@+id/etxt_re_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/custom_etxt_register"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Nhập lại mật khẩu"
+                android:minHeight="48dp"
+                android:paddingLeft="24dp"
+                android:textColor="#213140"
+                android:textColorHint="#A7A7A7"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_marginBottom="5dp"
+                android:id="@+id/btn_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_button_login"
+                android:fontFamily="@font/roboto_medium"
+                android:minHeight="48dp"
+                android:text="Đăng Ký"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>
