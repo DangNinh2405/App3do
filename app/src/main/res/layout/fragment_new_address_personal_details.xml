@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_3x"
+    android:clickable="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="13dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back_white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Thêm Thông Tin Địa Chỉ"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/custom_bg_body_white"
+        android:paddingTop="24dp">
+
+        <LinearLayout
+            android:id="@+id/lnl_body"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginBottom="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Địa chỉ nhận hàng"
+                android:textColor="@color/darkBlue"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etxt_address_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/custom_etxt_personal_details"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Tên người nhận"
+                android:padding="24dp"
+                android:textColor="@color/darkBlue"
+                android:textColorHint="#A7A7A7"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etxt_address_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/custom_etxt_personal_details"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Số điện thoại"
+                android:padding="24dp"
+                android:textColor="@color/darkBlue"
+                android:textColorHint="#A7A7A7"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txt_province"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/custom_etxt_personal_details"
+                android:drawableEnd="@drawable/ic_arrow_down_24"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Tỉnh/Thành phố"
+                android:padding="24dp"
+                android:textColor="@color/darkBlue"
+                android:textColorHint="#A7A7A7"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txt_district"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/custom_etxt_personal_details"
+                android:drawableEnd="@drawable/ic_arrow_down_24"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Quận/Huyện"
+                android:padding="24dp"
+                android:textColor="@color/darkBlue"
+                android:textColorHint="#A7A7A7"
+                android:textSize="14sp" />
+
+
+            <TextView
+                android:id="@+id/txt_ward"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/custom_etxt_personal_details"
+                android:drawableEnd="@drawable/ic_arrow_down_24"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Phường/Xã"
+                android:padding="24dp"
+                android:textColor="@color/darkBlue"
+                android:textColorHint="#A7A7A7"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etxt_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/custom_etxt_personal_details"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Đường/Số nhà"
+                android:padding="24dp"
+                android:textColor="@color/darkBlue"
+                android:textColorHint="#A7A7A7"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Lựa chọn"
+                android:textColor="@color/darkBlue"
+                android:textSize="14sp" />
+
+            <RadioGroup
+                android:id="@+id/rg_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:checkedButton="@id/rb_address_default">
+
+                <RadioButton
+                    android:id="@+id/rb_address_default"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Đặt làm địa chỉ mặc định"
+                    android:textColor="@color/darkBlue"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_address_company"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Đặt làm địa chỉ công ty"
+                    android:textColor="@color/darkBlue"
+                    android:textSize="14sp" />
+            </RadioGroup>
+
+
+            <Button
+                android:id="@+id/btn_add_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="28dp"
+                android:background="@drawable/custom_button_login"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Thêm Địa Chỉ"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

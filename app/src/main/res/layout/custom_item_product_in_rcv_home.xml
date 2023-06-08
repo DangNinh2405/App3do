@@ -28,8 +28,7 @@
                 <ImageView
                     android:id="@+id/img_product"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:src="@color/orange" />
+                    android:layout_height="wrap_content" />
             </androidx.cardview.widget.CardView>
 
             <LinearLayout
@@ -46,7 +45,7 @@
                     android:inputType="textMultiLine"
                     android:maxLines="3"
                     android:minHeight="48dp"
-                    android:text="Viên sủi young collagen (10 viên)"
+                    android:text=""
                     android:textColor="@color/darkBlue"
                     android:textSize="12sp" />
 
@@ -57,7 +56,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="299.000đ"
+                    android:text=""
                     android:textColor="@color/orange"
                     android:textSize="14sp" />
 
@@ -79,7 +78,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_light"
-                        android:text="39"
+                        android:text=""
                         android:textColor="#FF0000"
                         android:textSize="12sp" />
 

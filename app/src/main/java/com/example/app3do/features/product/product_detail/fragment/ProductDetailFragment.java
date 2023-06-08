@@ -2,7 +2,6 @@ package com.example.app3do.features.product.product_detail.fragment;
 
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -24,7 +23,7 @@ import com.example.app3do.features.product.product_detail.presenter.ProductDetai
 import com.example.app3do.features.product.product_detail.view.ProductDetailView;
 import com.example.app3do.models.cart.Cart;
 import com.example.app3do.models.product.DataProduct;
-import com.example.app3do.until.broadcast.MyBroadcastReceiver;
+import com.example.app3do.until.broadcast.BroadcastUpdateCart;
 import com.example.app3do.until.broadcast.UpdateCart;
 import com.example.app3do.until.direction.Direction;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -41,7 +40,7 @@ public class ProductDetailFragment extends BaseFragment implements ProductDetail
     TextView txt_product_price, txt_product_name, txt_product_point, txt_product_quantity, txt_product_specifications, txt_product_real_price, txt_quantity;
     DataProduct product;
     BottomSheetDialog dialog;
-    MyBroadcastReceiver receiver = new MyBroadcastReceiver(this);
+    BroadcastUpdateCart receiver = new BroadcastUpdateCart(this);
 
     Button btn_add_to_cart, btn_buy_now;
     boolean isBuyNow = false;
@@ -68,7 +67,7 @@ public class ProductDetailFragment extends BaseFragment implements ProductDetail
     @Override
     public void onStart() {
         IntentFilter filter = new IntentFilter();
-        filter.addAction(MyBroadcastReceiver.ACTION_UPDATE_CART);
+        filter.addAction(BroadcastUpdateCart.ACTION_UPDATE_CART);
 
         LocalBroadcastManager.getInstance(getContext()).registerReceiver(receiver, filter);
         super.onStart();
@@ -222,7 +221,7 @@ public class ProductDetailFragment extends BaseFragment implements ProductDetail
 
     @Override
     public void sendMessage(String message) {
-        Intent intent = new Intent(MyBroadcastReceiver.ACTION_UPDATE_CART);
+        Intent intent = new Intent(BroadcastUpdateCart.ACTION_UPDATE_CART);
 
         LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
         if (dialog != null) {
@@ -233,11 +232,11 @@ public class ProductDetailFragment extends BaseFragment implements ProductDetail
 
     @Override
     public void startCart() {
-        Intent intent = new Intent(MyBroadcastReceiver.ACTION_UPDATE_CART);
+        Intent intent = new Intent(BroadcastUpdateCart.ACTION_UPDATE_CART);
 
         LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
         dialog.cancel();
-        Direction.getInstance().directionToFragment(getParentFragmentManager(), R.id.frame_home, new CartDetailFragment(), null, "detail_cart");
+        Direction.getInstance().directionToFragment(getParentFragmentManager(), R.id.frame_home, new CartDetailFragment(), null, "cart_detail");
     }
 
     @Override

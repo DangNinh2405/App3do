@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginRight="16dp"
+                android:id="@+id/btn_this_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_btn_operation_focus"
+                android:fontFamily="@font/roboto_medium"
+                android:minHeight="32dp"
+                android:text="Tháng này"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <Button
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginRight="16dp"
+                android:id="@+id/btn_last_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_btn_operation_unfocus"
+                android:fontFamily="@font/roboto_medium"
+                android:minHeight="32dp"
+                android:text="Tháng trước"
+                android:textAllCaps="false"
+                android:textColor="@color/darkBlue"
+                android:textSize="12sp" />
+
+            <Button
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginRight="16dp"
+                android:id="@+id/btn_this_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_btn_operation_unfocus"
+                android:fontFamily="@font/roboto_medium"
+                android:minHeight="32dp"
+                android:text="Năm nay"
+                android:textAllCaps="false"
+                android:textColor="@color/darkBlue"
+                android:textSize="12sp" />
+
+            <RelativeLayout
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginRight="8dp"
+                android:id="@+id/rltl_select_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_btn_operation_unfocus">
+
+                <LinearLayout
+                    android:id="@+id/lnl_select"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/roboto_medium"
+                        android:padding="8dp"
+                        android:text="Chọn thời gian"
+                        android:textAllCaps="false"
+                        android:textColor="@color/darkBlue"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_calendar" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lnl_select_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/txt_time_before"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/roboto_medium"
+                        android:padding="8dp"
+                        android:text="Chọn thời gian"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/roboto_medium"
+                        android:padding="8dp"
+                        android:text="-"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/txt_time_after"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/roboto_medium"
+                        android:padding="8dp"
+                        android:text="Chọn thời gian"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+            </RelativeLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_centerHorizontal="true"
+            android:id="@+id/rcv_orders"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/custom_bg_body_grey"
+            android:padding="16dp" />
+        <ProgressBar
+            android:id="@+id/pg_loading"
+            android:visibility="gone"
+            android:layout_below="@id/rcv_orders"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/txt_no_data"
+            android:layout_marginTop="16dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/darkBlue"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="14sp"
+            android:text="Không có dữ liệu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

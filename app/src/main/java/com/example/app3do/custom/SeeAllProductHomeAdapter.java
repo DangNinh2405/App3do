@@ -26,6 +26,9 @@ public class SeeAllProductHomeAdapter extends RecyclerView.Adapter<SeeAllProduct
     private int countProductHorizontal;
 
     private ItemOnClickListener itemOnClickListener;
+    public void updateData(List<DataProduct> list) {
+        this.list = list;
+    }
 
     public void setItemOnClickListener(ItemOnClickListener itemOnClickListener) {
         this.itemOnClickListener = itemOnClickListener;

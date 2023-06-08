@@ -2,9 +2,10 @@ package com.example.app3do.models.cart;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class BodyCart {
+public class BodyCart implements Serializable {
 
     @SerializedName("meta")
     private MeTaCart meTaCart;

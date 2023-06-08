@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -31,7 +30,7 @@ import com.example.app3do.features.product.search_product.presenter.SearchProduc
 import com.example.app3do.features.product.search_product.view.SearchProductView;
 import com.example.app3do.models.cart.Cart;
 import com.example.app3do.models.product.DataProduct;
-import com.example.app3do.until.broadcast.MyBroadcastReceiver;
+import com.example.app3do.until.broadcast.BroadcastUpdateCart;
 import com.example.app3do.until.direction.Direction;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -281,10 +280,15 @@ public class SearchProductFragment extends BaseFragment implements SearchProduct
         txt_result.setText("Kết quả tìm kiếm");
         int width = getActivity().getWindowManager().getDefaultDisplay().getWidth();
         int scrollPosition = manager.findFirstVisibleItemPosition();
+        if(seeAllProductHomeAdapter == null) {
+            seeAllProductHomeAdapter = new SeeAllProductHomeAdapter(width, countProductHorizontal, list);
+            rcv_search_product.setAdapter(seeAllProductHomeAdapter);
+            rcv_search_product.setLayoutManager(manager);
+        } else {
+            seeAllProductHomeAdapter.updateData(list);
+            seeAllProductHomeAdapter.notifyDataSetChanged();
+        }
 
-        seeAllProductHomeAdapter = new SeeAllProductHomeAdapter(width, countProductHorizontal, list);
-        rcv_search_product.setAdapter(seeAllProductHomeAdapter);
-        rcv_search_product.setLayoutManager(manager);
         manager.scrollToPosition(scrollPosition);
 
         eventRecycleViewProduct(seeAllProductHomeAdapter);
@@ -293,7 +297,7 @@ public class SearchProductFragment extends BaseFragment implements SearchProduct
     @Override
     public void sendMessage(String message , boolean isUpdate) {
         if (isUpdate) {
-            Intent intent = new Intent(MyBroadcastReceiver.ACTION_UPDATE_CART);
+            Intent intent = new Intent(BroadcastUpdateCart.ACTION_UPDATE_CART);
             LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
             if (dialog != null) {
                 dialog.cancel();

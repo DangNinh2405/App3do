@@ -29,7 +29,7 @@ import com.example.app3do.features.product.see_all_product.fragment.SeeAllProduc
 import com.example.app3do.models.home.DataCategory;
 import com.example.app3do.models.home.DataSlide;
 import com.example.app3do.models.product.DataProduct;
-import com.example.app3do.until.broadcast.MyBroadcastReceiver;
+import com.example.app3do.until.broadcast.BroadcastUpdateCart;
 import com.example.app3do.until.broadcast.UpdateCart;
 import com.example.app3do.until.direction.Direction;
 
@@ -39,7 +39,7 @@ import me.relex.circleindicator.CircleIndicator3;
 
 public class HomeFragment extends BaseFragment implements HomeView, UpdateCart {
     HomePresenter presenter;
-    MyBroadcastReceiver receiver = new MyBroadcastReceiver(this);
+    BroadcastUpdateCart receiver = new BroadcastUpdateCart(this);
     RelativeLayout rltl_cart;
     ViewPager2 view_pager_slider;
     CircleIndicator3 indicator_slider;
@@ -65,7 +65,7 @@ public class HomeFragment extends BaseFragment implements HomeView, UpdateCart {
     @Override
     public void onStart() {
         IntentFilter filter = new IntentFilter();
-        filter.addAction(MyBroadcastReceiver.ACTION_UPDATE_CART);
+        filter.addAction(BroadcastUpdateCart.ACTION_UPDATE_CART);
         LocalBroadcastManager.getInstance(getContext()).registerReceiver(receiver, filter);
         super.onStart();
     }

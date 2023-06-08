@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.app3do.R;
 import com.example.app3do.models.cart.DataCart;
-import com.example.app3do.models.product.DataProduct;
 
 import java.text.NumberFormat;
 import java.util.List;
@@ -27,15 +26,20 @@ public class CartDetailAdapter extends RecyclerView.Adapter<CartDetailAdapter.My
 
     private int width;
     private List<DataCart> list;
+    private boolean isOrderConfirm;
+    public void updateData(List<DataCart> list){
+        this.list = list;
+    }
     private ItemOnClickListener itemOnClickListener;
 
     public void setItemOnClickListener(ItemOnClickListener itemOnClickListener) {
         this.itemOnClickListener = itemOnClickListener;
     }
 
-    public CartDetailAdapter(int width, List<DataCart> list) {
+    public CartDetailAdapter(int width, List<DataCart> list, boolean isOrderConfirm) {
         this.width = width;
         this.list = list;
+        this.isOrderConfirm = isOrderConfirm;
     }
 
     @NonNull
@@ -50,20 +54,28 @@ public class CartDetailAdapter extends RecyclerView.Adapter<CartDetailAdapter.My
         DataCart dataCart = list.get(position);
 
         if (dataCart != null) {
+            holder.txt_discount_percent.setText(String.valueOf(dataCart.getProduct().getDiscountPercent()));
+
             Glide.with(holder.itemView).load(dataCart.getProduct().getAvatar().getUrl()).into(holder.img_product);
             holder.txt_product_name.setText(dataCart.getProduct().getName());
-            holder.txt_discount_percent.setText(String.valueOf(dataCart.getProduct().getMinPricePolicy().getDiscountPercentRound()));
 
             holder.txt_price.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             holder.txt_price.setText(format.format(dataCart.getProduct().getPrice()));
 
-            holder.txt_real_price.setText(format.format(dataCart.getProduct().getMinPricePolicy().getRealPrice()));
-            holder.etxt_quantity.setText(String.valueOf(dataCart.getQuantity()));
+            holder.txt_real_price.setText(format.format(dataCart.getProduct().getDiscountPrice()));
+
+            if (isOrderConfirm) {
+                holder.etxt_quantity.setText("x" + dataCart.getQuantity());
+                holder.etxt_quantity.setEnabled(false);
+            } else {
+                holder.etxt_quantity.setText(String.valueOf(dataCart.getQuantity()));
+            }
+
 
             holder.txt_total_price.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             holder.txt_total_price.setText(format.format(dataCart.getProduct().getPrice() * dataCart.getQuantity()));
 
-            holder.txt_total_real_price.setText(format.format(dataCart.getProduct().getMinPricePolicy().getRealPrice() * dataCart.getQuantity()));
+            holder.txt_total_real_price.setText(format.format(dataCart.getProduct().getDiscountPrice() * dataCart.getQuantity()));
             event(holder, dataCart);
         }
 
@@ -102,21 +114,29 @@ public class CartDetailAdapter extends RecyclerView.Adapter<CartDetailAdapter.My
     }
 
     private void event(MyHolder holder, DataCart dataCart) {
-        holder.btn_minus_quantity.setOnClickListener( v -> {
-            int count = -1;
-            itemOnClickListener.minusProduct(dataCart.getProduct().getId(), count);
-        });
+        if (isOrderConfirm) {
+            holder.btn_minus_quantity.setVisibility(View.GONE);
+            holder.btn_plus_quantity.setVisibility(View.GONE);
+            holder.img_delete_product.setVisibility(View.GONE);
+        } else {
+            holder.btn_minus_quantity.setOnClickListener( v -> {
+                int count = -1;
+                itemOnClickListener.minusProduct(dataCart.getProduct().getId(), count);
+            });
 
-        holder.btn_plus_quantity.setOnClickListener( v -> {
-            int count = 1;
-            itemOnClickListener.plusProduct(dataCart.getProduct().getId(), count);
-        });
+            holder.btn_plus_quantity.setOnClickListener( v -> {
+                int count = 1;
+                itemOnClickListener.plusProduct(dataCart.getProduct().getId(), count);
+            });
 
-        holder.img_delete_product.setOnClickListener( v -> {
-            int count = 0;
-            itemOnClickListener.deleteProduct(dataCart.getProduct().getId(), count);
-        });
+            holder.img_delete_product.setOnClickListener( v -> {
+                int count = 0;
+                itemOnClickListener.deleteProduct(dataCart.getProduct().getId(), count);
+            });
+        }
+
     }
+
 
     public interface ItemOnClickListener {
         void minusProduct(int productId, int quantity);

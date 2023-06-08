@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/custom_bg_dialog_address_personal"
+    android:gravity="center_horizontal"
+    android:padding="16dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:id="@+id/txt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Chọn tỉnh thành phố"
+        android:textColor="@color/darkBlue"
+        android:textSize="16sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_select_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

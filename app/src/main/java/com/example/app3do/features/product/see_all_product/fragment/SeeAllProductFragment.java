@@ -29,12 +29,11 @@ import com.example.app3do.features.product.see_all_product.view.SeeAllProductVie
 import com.example.app3do.models.cart.Cart;
 import com.example.app3do.models.home.DataCategory;
 import com.example.app3do.models.product.DataProduct;
-import com.example.app3do.until.broadcast.MyBroadcastReceiver;
+import com.example.app3do.until.broadcast.BroadcastUpdateCart;
 import com.example.app3do.until.direction.Direction;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -242,7 +241,7 @@ public class SeeAllProductFragment extends BaseFragment implements SeeAllProduct
     @Override
     public void sendMessage(String message, boolean isUpdate) {
         if (isUpdate) {
-            Intent intent = new Intent(MyBroadcastReceiver.ACTION_UPDATE_CART);
+            Intent intent = new Intent(BroadcastUpdateCart.ACTION_UPDATE_CART);
             LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
             if (dialog != null) {
                 dialog.cancel();

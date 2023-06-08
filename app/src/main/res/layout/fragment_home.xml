@@ -139,7 +139,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/custom_bg_body"
+                android:background="@drawable/custom_bg_body_white"
                 android:orientation="vertical"
                 android:paddingTop="24dp"
                 android:paddingBottom="24dp">

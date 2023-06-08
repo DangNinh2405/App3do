@@ -28,7 +28,10 @@
 
         <activity android:name=".features.layout.home.activity.HomeActivity" android:exported="false" />
 
-        <receiver android:name=".until.broadcast.MyBroadcastReceiver"/>
+        <receiver android:name=".until.broadcast.BroadcastUpdateCart"/>
+        <receiver android:name=".until.broadcast.BroadcastUpdatePersonal"/>
+        <receiver android:name=".until.broadcast.BroadcastOrder"/>
+        <receiver android:name=".until.broadcast.BroadcastSubOrder"/>
     </application>
 
 </manifest>

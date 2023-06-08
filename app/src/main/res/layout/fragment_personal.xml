@@ -91,7 +91,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/custom_bg_body"
+        android:background="@drawable/custom_bg_body_white"
         android:paddingTop="24dp">
 
         <LinearLayout
@@ -100,6 +100,39 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img_rating"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/rating_2x"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:id="@+id/img_material"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/bronze_2x" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/txt_material"
+                android:textSize="18sp"
+                android:text="Dong"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/grey"
+                android:layout_marginTop="5dp"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:layout_marginTop="24dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -118,7 +151,7 @@
                         android:fontFamily="@font/roboto_medium"
                         android:textColor="@color/orange"
                         android:textSize="12sp"
-                        android:text="300"
+                        android:text=""
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -135,7 +168,7 @@
                         android:fontFamily="@font/roboto_medium"
                         android:textColor="@color/orange"
                         android:textSize="12sp"
-                        android:text="1.000"
+                        android:text=""
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -195,13 +228,13 @@
                     </LinearLayout>
 
                     <TextView
-                        android:id="@+id/txt_total_order_success"
+                        android:id="@+id/txt_total_ord_amount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginBottom="18dp"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="10.000.000đ"
+                        android:text=""
                         android:textColor="@color/orange"
                         android:textSize="24sp" />
 
@@ -270,7 +303,7 @@
                         android:layout_gravity="center"
                         android:layout_marginBottom="18dp"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="10.000.000đ"
+                        android:text=""
                         android:textColor="@color/orange"
                         android:textSize="24sp" />
 

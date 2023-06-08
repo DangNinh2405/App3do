@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:background="@drawable/bg_3x"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="13dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back_white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Thêm Thông tin Ngân hàng"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:paddingTop="24dp"
+        android:background="@drawable/custom_bg_body_white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/lnl_body"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_marginBottom="40dp"
+                android:layout_gravity="center"
+                android:src="@drawable/payment_2x"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/etxt_account_name"
+                android:layout_marginBottom="24dp"
+                android:padding="24dp"
+                android:textColor="@color/darkBlue"
+                android:hint="Chủ tài khoản"
+                android:textColorHint="#A7A7A7"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_regular"
+                android:background="@drawable/custom_etxt_personal_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/etxt_account_number"
+                android:layout_marginBottom="24dp"
+                android:padding="24dp"
+                android:textColor="@color/darkBlue"
+                android:hint="Số tài khoản"
+                android:textColorHint="#A7A7A7"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_regular"
+                android:background="@drawable/custom_etxt_personal_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+
+                android:id="@+id/etxt_bank_name"
+                android:layout_marginBottom="24dp"
+                android:padding="24dp"
+                android:textColor="@color/darkBlue"
+                android:hint="Tên ngân hàng"
+                android:textColorHint="#A7A7A7"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_regular"
+                android:background="@drawable/custom_etxt_personal_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/etxt_branch"
+                android:layout_marginBottom="48dp"
+                android:padding="24dp"
+                android:textColor="@color/darkBlue"
+                android:hint="Chi nhánh"
+                android:textColorHint="#A7A7A7"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_regular"
+                android:background="@drawable/custom_etxt_personal_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btn_add_new_bank"
+                android:textColor="@color/white"
+                android:textAllCaps="true"
+                android:fontFamily="@font/roboto_medium"
+                android:textSize="16sp"
+                android:text="Thêm tài khoản"
+                android:background="@drawable/custom_button_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

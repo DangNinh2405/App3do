@@ -5,7 +5,9 @@ import com.example.app3do.data.api.APIService;
 import com.example.app3do.data.api.BaseAPIClient;
 import com.example.app3do.data.api.HandleResponse;
 import com.example.app3do.features.layout.personal.view.PersonalView;
-import com.example.app3do.models.personal_information.BodyPersonal;
+import com.example.app3do.models.personal.BodyPersonal;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
 public class PersonalPresenter extends BasePresenterT<PersonalView> {
     private final String WITH = "banks,wallet,addresses";
@@ -14,7 +16,7 @@ public class PersonalPresenter extends BasePresenterT<PersonalView> {
         super(view);
     }
 
-    public void handlePersonalInformation(String accessToken) {
+    public void getPersonalInformation(String accessToken) {
         APIService apiService = BaseAPIClient.getInstance().getAPIService();
         HandleResponse<BodyPersonal> response = new HandleResponse<BodyPersonal>(apiService.getPersonalInformation(accessToken, WITH)) {
             @Override

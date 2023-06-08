@@ -18,17 +18,36 @@ public class DataProduct implements Serializable {
     @SerializedName("price")
     private int price;
 
+    @SerializedName("discount_percent")
+    private float discountPercent;
+
+    @SerializedName("discount_price")
+    private int discountPrice;
+
     @SerializedName("point")
     private int point;
-
-    @SerializedName("price_formatted")
-    private String priceFormatted;
 
     @SerializedName("min_price_policy")
     private MinPricePolicy minPricePolicy;
 
     @SerializedName("avatar")
     private Avatar avatar;
+
+    public float getDiscountPercent() {
+        return discountPercent;
+    }
+
+    public void setDiscountPercent(float discountPercent) {
+        this.discountPercent = discountPercent;
+    }
+
+    public int getDiscountPrice() {
+        return discountPrice;
+    }
+
+    public void setDiscountPrice(int discountPrice) {
+        this.discountPrice = discountPrice;
+    }
 
     public int getPoint() {
         return point;
@@ -70,13 +89,6 @@ public class DataProduct implements Serializable {
         this.price = price;
     }
 
-    public String getPriceFormatted() {
-        return priceFormatted;
-    }
-
-    public void setPriceFormatted(String priceFormatted) {
-        this.priceFormatted = priceFormatted;
-    }
 
     public MinPricePolicy getMinPricePolicy() {
         return minPricePolicy;

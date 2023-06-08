@@ -74,6 +74,7 @@ public class ProductHomeAdapter extends RecyclerView.Adapter<ProductHomeAdapter.
             txt_product_price = itemView.findViewById(R.id.txt_product_price);
             txt_product_discount_percent = itemView.findViewById(R.id.txt_product_discount_percent);
             lnl_item.getLayoutParams().width = (int) Math.round(width * 0.32608695652);
+            img_product.getLayoutParams().height = (int) Math.round(width * 0.32608695652);
         }
     }
 

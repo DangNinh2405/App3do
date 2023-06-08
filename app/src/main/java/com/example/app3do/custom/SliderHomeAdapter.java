@@ -50,7 +50,7 @@ public class SliderHomeAdapter extends RecyclerView.Adapter<SliderHomeAdapter.My
             super(itemView);
             img_slider = itemView.findViewById(R.id.img_slider);
             img_slider.getLayoutParams().width = (int) Math.round(width * 0.92270531401);
-            img_slider.getLayoutParams().height = (int) Math.round(width * 0.35024154589);
+            img_slider.getLayoutParams().height = (int) Math.round(width * 0.4);
         }
     }
 }

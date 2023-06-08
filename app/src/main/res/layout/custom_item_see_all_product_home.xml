@@ -30,7 +30,7 @@
         android:inputType="textMultiLine"
         android:maxLines="3"
         android:minHeight="50dp"
-        android:text="Dầu gội nâu tóc thảo dược Tosmedy 15ml"
+        android:text=""
         android:textColor="@color/darkBlue"
         android:textSize="12sp" />
 
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:fontFamily="@font/roboto_medium"
-            android:text="45.000đ"
+            android:text=""
             android:textColor="@color/orange"
             android:textSize="14sp" />
 
@@ -78,7 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_light"
-            android:text="37"
+            android:text=""
             android:textColor="#FF0000"
             android:textSize="12sp" />
 
