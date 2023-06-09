@@ -4,6 +4,7 @@ import com.example.app3do.models.account.BodyLogin;
 import com.example.app3do.models.cart.Order;
 import com.example.app3do.models.home.BodyCategory;
 import com.example.app3do.models.home.BodySlide;
+import com.example.app3do.models.marketing.BodyMarketing;
 import com.example.app3do.models.order.BodyOrder;
 import com.example.app3do.models.personal.AddAddress;
 import com.example.app3do.models.personal.BodyPersonal;
@@ -63,6 +64,9 @@ public interface APIService {
 
     @GET("/api/order")
     Call<JsonElement> getOrders(@Query("with") String with, @Query("access_token") String access_token, @Query("page") int page, @Query("start_date") String start_date, @Query("end_date") String end_date);
+
+    @GET("/api/direct-users")
+    Call<BodyMarketing> getMemberMarketing(@Query("access_token") String access_token, @Query("page") int page, @Query("sort") String sort, @Query("start_date") String start_date, @Query("end_date") String end_date);
 
     @GET("/api/order/sub-orders")
     Call<JsonElement> getSubOrders(@Query("access_token") String access_token, @Query("page") int page, @Query("start_date") String start_date, @Query("end_date") String end_date);

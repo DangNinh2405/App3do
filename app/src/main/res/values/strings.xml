@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">3Do</string>
+    
+    <string-array name="sort_list">
+        <item>Theo hạng</item>
+        <item>Theo số lượng F1</item>
+        <item>Theo điểm Marketing</item>
+    </string-array>
 </resources>

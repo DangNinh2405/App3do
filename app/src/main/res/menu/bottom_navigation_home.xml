@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/menu_home" android:icon="@drawable/ic_house" android:title="Trang chủ" />
-    <item android:id="@+id/menu_system" android:icon="@drawable/system" android:title="Hệ thống" />
+    <item android:id="@+id/menu_system" android:icon="@drawable/system" android:title="Marketing" />
     <item android:id="@+id/menu_operation" android:icon="@drawable/operation" android:title="Hoạt động" />
     <item android:id="@+id/menu_report" android:icon="@drawable/report" android:title="Báo cáo" />
     <item android:id="@+id/menu_personal" android:icon="@drawable/personal" android:title="Cá nhân" />
