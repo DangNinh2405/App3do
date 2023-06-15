@@ -1,4 +1,4 @@
-package com.example.app3do.features.marketing.fragment;
+package com.example.app3do.features.layout.marketing.fragment;
 
 import android.app.DatePickerDialog;
 import android.graphics.Color;
@@ -26,9 +26,8 @@ import com.example.app3do.R;
 import com.example.app3do.base.BaseFragment;
 import com.example.app3do.custom.MemberMarketingAdapter;
 import com.example.app3do.features.layout.home.activity.HomeActivity;
-import com.example.app3do.features.marketing.presenter.MarketingPresenter;
-import com.example.app3do.features.marketing.view.MarketingView;
-import com.example.app3do.models.marketing.BodyMarketing;
+import com.example.app3do.features.layout.marketing.presenter.MarketingPresenter;
+import com.example.app3do.features.layout.marketing.view.MarketingView;
 import com.example.app3do.models.marketing.MetaMarketing;
 import com.example.app3do.models.personal.DataPersonal;
 
@@ -338,6 +337,8 @@ public class MarketingFragment extends BaseFragment implements MarketingView {
     }
 
     private void setLayoutRecycleViewMember(boolean isGird) {
+        adapter = new MemberMarketingAdapter(width, countProductHorizontal, isGirdView, list);
+        rcv_nember_f1.setAdapter(adapter);
         if (isGird) {
             rcv_nember_f1.setLayoutManager(managerGird);
         } else {

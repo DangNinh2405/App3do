@@ -1,4 +1,4 @@
-package com.example.app3do.features.marketing.view;
+package com.example.app3do.features.layout.marketing.view;
 
 import com.example.app3do.models.marketing.BodyMarketing;
 import com.example.app3do.models.marketing.MetaMarketing;

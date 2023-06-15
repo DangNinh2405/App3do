@@ -39,7 +39,13 @@ public class MemberMarketingAdapter extends RecyclerView.Adapter<MemberMarketing
     @NonNull
     @Override
     public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_item_member_f1_grid, parent, false);
+        View view;
+        if (isGirdView) {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_item_member_f1_grid, parent, false);
+        } else {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_item_member_f1_linear, parent, false);
+        }
+
         return new MyHolder(view);
     }
 
@@ -48,22 +54,6 @@ public class MemberMarketingAdapter extends RecyclerView.Adapter<MemberMarketing
         DataPersonal dataPersonal = list.get(position);
 
         if (dataPersonal != null) {
-            int widthItem = width / count;
-
-            if (isGirdView) {
-                holder.txt_space.getLayoutParams().width = 0;
-                holder.view_avatar.getLayoutParams().width = (int) Math.round(widthItem * 0.15700483091);
-                holder.view_avatar.getLayoutParams().height = (int) Math.round(widthItem * 0.15700483091);
-                holder.img_avatar.getLayoutParams().width = (int) Math.round(widthItem * 0.15700483091);
-                holder.img_avatar.getLayoutParams().height = (int) Math.round(widthItem * 0.15700483091);
-            } else {
-                holder.txt_space.getLayoutParams().width = (int) Math.round(width * 0.16666666666 + 32);
-                holder.view_avatar.getLayoutParams().width = (int) Math.round(width * 0.16666666666);
-                holder.view_avatar.getLayoutParams().height = (int) Math.round(width * 0.16666666666);
-                holder.img_avatar.getLayoutParams().width = (int) Math.round(width * 0.16666666666);
-                holder.img_avatar.getLayoutParams().height = (int) Math.round(width * 0.16666666666);
-            }
-
             Glide.with(holder.itemView).load(dataPersonal.getAvatar()).into(holder.img_avatar);
             holder.txt_address.setText(dataPersonal.getAddress());
             holder.txt_name.setText(dataPersonal.getName());
@@ -79,7 +69,7 @@ public class MemberMarketingAdapter extends RecyclerView.Adapter<MemberMarketing
     public class MyHolder extends RecyclerView.ViewHolder {
         ImageView img_avatar;
         View view_avatar;
-        TextView txt_name, txt_phone, txt_address, txt_space;
+        TextView txt_name, txt_phone, txt_address;
 
         public MyHolder(@NonNull View itemView) {
             super(itemView);
@@ -89,7 +79,20 @@ public class MemberMarketingAdapter extends RecyclerView.Adapter<MemberMarketing
             txt_name = itemView.findViewById(R.id.txt_name);
             txt_phone = itemView.findViewById(R.id.txt_phone);
             txt_address = itemView.findViewById(R.id.txt_address);
-            txt_space = itemView.findViewById(R.id.txt_space);
+
+            int widthItem = width / count;
+
+            if (isGirdView) {
+                view_avatar.getLayoutParams().width = (int) Math.round(widthItem * 0.15700483091);
+                view_avatar.getLayoutParams().height = (int) Math.round(widthItem * 0.15700483091);
+                img_avatar.getLayoutParams().width = (int) Math.round(widthItem * 0.15700483091);
+                img_avatar.getLayoutParams().height = (int) Math.round(widthItem * 0.15700483091);
+            } else {
+                view_avatar.getLayoutParams().width = (int) Math.round(width * 0.16666666666);
+                view_avatar.getLayoutParams().height = (int) Math.round(width * 0.16666666666);
+                img_avatar.getLayoutParams().width = (int) Math.round(width * 0.16666666666);
+                img_avatar.getLayoutParams().height = (int) Math.round(width * 0.16666666666);
+            }
         }
     }
 }

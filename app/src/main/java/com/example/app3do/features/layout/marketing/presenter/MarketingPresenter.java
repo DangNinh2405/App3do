@@ -1,13 +1,12 @@
-package com.example.app3do.features.marketing.presenter;
+package com.example.app3do.features.layout.marketing.presenter;
 
 import com.example.app3do.base.BasePresenterT;
 import com.example.app3do.data.api.APIService;
 import com.example.app3do.data.api.BaseAPIClient;
 import com.example.app3do.data.api.HandleResponse;
-import com.example.app3do.features.marketing.view.MarketingView;
+import com.example.app3do.features.layout.marketing.view.MarketingView;
 import com.example.app3do.models.marketing.BodyMarketing;
 import com.example.app3do.models.personal.DataPersonal;
-import com.google.gson.JsonElement;
 
 import java.util.ArrayList;
 import java.util.List;
