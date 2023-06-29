@@ -23,31 +23,35 @@ import com.example.app3do.features.cart.cart_detail.fragment.CartDetailFragment;
 import com.example.app3do.features.layout.home.activity.HomeActivity;
 import com.example.app3do.features.layout.home.presenter.HomePresenter;
 import com.example.app3do.features.layout.home.view.HomeView;
+import com.example.app3do.features.notification.fragment.NotificationFragment;
 import com.example.app3do.features.product.product_detail.fragment.ProductDetailFragment;
 import com.example.app3do.features.product.search_product.fragment.SearchProductFragment;
 import com.example.app3do.features.product.see_all_product.fragment.SeeAllProductFragment;
 import com.example.app3do.models.home.DataCategory;
 import com.example.app3do.models.home.DataSlide;
 import com.example.app3do.models.product.DataProduct;
+import com.example.app3do.until.broadcast.BroadcastNotification;
 import com.example.app3do.until.broadcast.BroadcastUpdateCart;
 import com.example.app3do.until.broadcast.UpdateCart;
+import com.example.app3do.until.broadcast.UpdateNotification;
 import com.example.app3do.until.direction.Direction;
 
 import java.util.List;
 
 import me.relex.circleindicator.CircleIndicator3;
 
-public class HomeFragment extends BaseFragment implements HomeView, UpdateCart {
+public class HomeFragment extends BaseFragment implements HomeView, UpdateCart, UpdateNotification {
     HomePresenter presenter;
     BroadcastUpdateCart receiver = new BroadcastUpdateCart(this);
-    RelativeLayout rltl_cart;
+    BroadcastNotification broadcastNotification = new BroadcastNotification(this);
+    RelativeLayout rltl_cart, rltl_notification;
     ViewPager2 view_pager_slider;
     CircleIndicator3 indicator_slider;
     SliderHomeAdapter sliderHomeAdapter;
     ProductHomeAdapter hotSaleAdapter1, hotSaleAdapter2, newProductAdapter;
     CategoryHomeAdapter categoryHomeAdapter;
     RecyclerView rcv_category, rcv_hot_sale_1, rcv_hot_sale_2, rcv_new_product;
-    TextView see_all_new_product, see_all_hot_sale, txt_search_product, txt_quantity;
+    TextView see_all_new_product, see_all_hot_sale, txt_search_product, txt_quantity_cart, txt_quantity_notification;
     HomeActivity homeActivity;
 
     @Override
@@ -64,15 +68,20 @@ public class HomeFragment extends BaseFragment implements HomeView, UpdateCart {
 
     @Override
     public void onStart() {
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(BroadcastUpdateCart.ACTION_UPDATE_CART);
-        LocalBroadcastManager.getInstance(getContext()).registerReceiver(receiver, filter);
+        IntentFilter filterCart = new IntentFilter();
+        filterCart.addAction(BroadcastUpdateCart.ACTION_UPDATE_CART);
+        LocalBroadcastManager.getInstance(getContext()).registerReceiver(receiver, filterCart);
+
+        IntentFilter filterNotification = new IntentFilter();
+        filterNotification.addAction(BroadcastNotification.ACTION_UPDATE_NOTIFICATION);
+        LocalBroadcastManager.getInstance(getContext()).registerReceiver(broadcastNotification, filterNotification);
         super.onStart();
     }
 
     @Override
     public void onStop() {
         LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(receiver);
+        LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(broadcastNotification);
         super.onStop();
     }
 
@@ -90,7 +99,9 @@ public class HomeFragment extends BaseFragment implements HomeView, UpdateCart {
         see_all_hot_sale = view.findViewById(R.id.see_all_hot_sale);
         txt_search_product = view.findViewById(R.id.txt_search_product);
         rltl_cart = view.findViewById(R.id.rltl_cart);
-        txt_quantity = view.findViewById(R.id.txt_quantity);
+        txt_quantity_cart = view.findViewById(R.id.txt_quantity_cart);
+        txt_quantity_notification = view.findViewById(R.id.txt_quantity_notification);
+        rltl_notification = view.findViewById(R.id.rltl_notification);
     }
 
     private void initView() {
@@ -100,6 +111,7 @@ public class HomeFragment extends BaseFragment implements HomeView, UpdateCart {
         presenter.createHotSaleProduct(Constants.PAGE_2, false);
         presenter.createNewProduct(Constants.PAGE_1);
         presenter.createQuantityCart(homeActivity.getAccessToken());
+        presenter.createQuantifyNotification(homeActivity.getAccessToken());
     }
 
     private void event() {
@@ -117,6 +129,34 @@ public class HomeFragment extends BaseFragment implements HomeView, UpdateCart {
 
         rltl_cart.setOnClickListener( v -> {
             Direction.getInstance().directionToFragment(getParentFragmentManager(), R.id.frame_home, new CartDetailFragment(), null, "cart_detail");
+        });
+
+        rltl_notification.setOnClickListener( v -> {
+            Direction.getInstance().directionToFragment(getParentFragmentManager(), R.id.frame_home, new NotificationFragment(), null, "notification");
+
+//            APIFirebase apiFirebase = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_FIREBASE, APIFirebase.class);
+//
+//            String to = "ebvJbGRZR_2aX7URU-Nnhw:APA91bEDMF-ZrwJ94gZT6lPIZwsFPX5GGJANcxrxCKjtPI2lZFSV_Uyy2kHbYZDkL4MdHQiKEE7xE-W8Gruxf4THS8rblzep-4IurJqlg5oKoDIVXESPGB_wIl9F4N0BFDfkhVKDIIzM";
+//            RawDataFirebaseMessage data = new RawDataFirebaseMessage("Thông báo", "Thông báo");
+//
+//            RawFirebaseMessage rawFirebaseMessage = new RawFirebaseMessage(to, data);
+//
+//            Gson gson = new Gson();
+//
+//            RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(rawFirebaseMessage));
+//            HandleResponse<BodyFirebaseMessage> response = new HandleResponse<BodyFirebaseMessage>(apiFirebase.sendNotification(body)) {
+//                @Override
+//                public void isSuccess(BodyFirebaseMessage obj) {
+//                    getMessage("Thành công");
+//                }
+//
+//                @Override
+//                public void isFailed(String error) {
+//                    getMessage(error);
+//                }
+//            };
+//
+//            response.callAPI();
         });
     }
 
@@ -189,7 +229,12 @@ public class HomeFragment extends BaseFragment implements HomeView, UpdateCart {
 
     @Override
     public void createQuantityCart(int quantity) {
-        txt_quantity.setText(String.valueOf(quantity));
+        txt_quantity_cart.setText(String.valueOf(quantity));
+    }
+
+    @Override
+    public void createQuantifyNotification(int quantity) {
+        txt_quantity_notification.setText(String.valueOf(quantity));
     }
 
     private void eventRecycleViewProduct(ProductHomeAdapter adapter){
@@ -212,5 +257,7 @@ public class HomeFragment extends BaseFragment implements HomeView, UpdateCart {
     @Override
     public void update() {
         presenter.createQuantityCart(homeActivity.getAccessToken());
+        presenter.createQuantifyNotification(homeActivity.getAccessToken());
     }
+
 }

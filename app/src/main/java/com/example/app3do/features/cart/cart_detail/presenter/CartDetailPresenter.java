@@ -23,7 +23,7 @@ public class CartDetailPresenter extends BasePresenterT<CartDetailView> {
     }
 
     public void getProductInCart(String accessToken, boolean isUpdate){
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<JsonElement> response = new HandleResponse<JsonElement>(apiService.getListProductToCart(accessToken)) {
             @Override
             public void isSuccess(JsonElement obj) {
@@ -55,7 +55,7 @@ public class CartDetailPresenter extends BasePresenterT<CartDetailView> {
     public void updateProductInCart(String accessToken, Cart cart, boolean isUpdate){
         Gson gson = new Gson();
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(cart));
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<JsonElement> response = new HandleResponse<JsonElement>(apiService.updateProductInCart(accessToken, body)) {
             @Override
             public void isSuccess(JsonElement obj) {
@@ -86,7 +86,7 @@ public class CartDetailPresenter extends BasePresenterT<CartDetailView> {
 
 
     public void getPersonalInformation(String accessToken) {
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<BodyPersonal> response = new HandleResponse<BodyPersonal>(apiService.getPersonalInformation(accessToken, WITH)) {
             @Override
             public void isSuccess(BodyPersonal obj) {
@@ -109,7 +109,7 @@ public class CartDetailPresenter extends BasePresenterT<CartDetailView> {
     public void deleteAddressPersonal(String accessToken, int id) {
         DeleteAddress address = new DeleteAddress(accessToken, id);
 
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<JsonElement> response = new HandleResponse<JsonElement>(apiService.deleteAddressById(id, accessToken, address)) {
             @Override
             public void isSuccess(JsonElement obj) {

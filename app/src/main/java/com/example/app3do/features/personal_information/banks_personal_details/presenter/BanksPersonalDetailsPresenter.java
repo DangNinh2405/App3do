@@ -19,7 +19,7 @@ public class BanksPersonalDetailsPresenter extends BasePresenterT<BanksPersonalD
     public void deleteBankPersonal(String accessToken, int id) {
         DeleteAddress address = new DeleteAddress(accessToken, id);
 
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<JsonElement> response = new HandleResponse<JsonElement>(apiService.deleteBankById(id, accessToken, address)) {
             @Override
             public void isSuccess(JsonElement obj) {
@@ -43,7 +43,7 @@ public class BanksPersonalDetailsPresenter extends BasePresenterT<BanksPersonalD
     }
 
     public void getPersonalInformation(String accessToken) {
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<BodyPersonal> response = new HandleResponse<BodyPersonal>(apiService.getPersonalInformation(accessToken, WITH)) {
             @Override
             public void isSuccess(BodyPersonal obj) {

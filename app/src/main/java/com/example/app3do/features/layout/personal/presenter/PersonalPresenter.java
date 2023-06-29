@@ -17,7 +17,7 @@ public class PersonalPresenter extends BasePresenterT<PersonalView> {
     }
 
     public void getPersonalInformation(String accessToken) {
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<BodyPersonal> response = new HandleResponse<BodyPersonal>(apiService.getPersonalInformation(accessToken, WITH)) {
             @Override
             public void isSuccess(BodyPersonal obj) {

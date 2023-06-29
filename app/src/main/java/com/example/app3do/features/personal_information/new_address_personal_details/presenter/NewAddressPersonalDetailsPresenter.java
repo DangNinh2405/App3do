@@ -25,7 +25,7 @@ public class NewAddressPersonalDetailsPresenter extends BasePresenterT<NewAddres
     }
 
     public void createSelectProvince(String accessToken, TextView view) {
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<BodyWardDistrictProvince> response = new HandleResponse<BodyWardDistrictProvince>(apiService.getListProvince(accessToken)) {
             @Override
             public void isSuccess(BodyWardDistrictProvince obj) {
@@ -50,7 +50,7 @@ public class NewAddressPersonalDetailsPresenter extends BasePresenterT<NewAddres
         if (province != null) {
             province_id = String.valueOf(province.getId());
         }
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<BodyWardDistrictProvince> response = new HandleResponse<BodyWardDistrictProvince>(apiService.getListDistrict(accessToken, province_id)) {
             @Override
             public void isSuccess(BodyWardDistrictProvince obj) {
@@ -76,7 +76,7 @@ public class NewAddressPersonalDetailsPresenter extends BasePresenterT<NewAddres
             district_id = String.valueOf(district.getId());
         }
 
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<BodyWardDistrictProvince> response = new HandleResponse<BodyWardDistrictProvince>(apiService.getListWard(accessToken, district_id)) {
             @Override
             public void isSuccess(BodyWardDistrictProvince obj) {
@@ -100,7 +100,7 @@ public class NewAddressPersonalDetailsPresenter extends BasePresenterT<NewAddres
         Gson gson = new Gson();
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(address));
 
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<JsonElement> response = new HandleResponse<JsonElement>(apiService.addNewAddress(address.getAccessToken(), body)) {
             @Override
             public void isSuccess(JsonElement obj) {

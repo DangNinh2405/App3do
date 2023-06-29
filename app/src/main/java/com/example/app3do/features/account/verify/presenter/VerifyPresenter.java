@@ -14,7 +14,7 @@ public class VerifyPresenter extends BasePresenterT<VerifyView> {
     }
 
     public void sendOTP(String phoneNumber){
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<BodyVerify> response = new HandleResponse<BodyVerify>(apiService.reSendConfirmCode(phoneNumber)) {
             @Override
             public void isSuccess(BodyVerify obj) {
@@ -40,7 +40,7 @@ public class VerifyPresenter extends BasePresenterT<VerifyView> {
     }
 
     private void checkSmsCode(String smsCode, int user_id){
-        APIService api = BaseAPIClient.getInstance().getAPIService();
+        APIService api = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<JsonElement> response = new HandleResponse<JsonElement>(api.checkConfirmCode(user_id, smsCode)) {
             @Override
             public void isSuccess(JsonElement obj) {

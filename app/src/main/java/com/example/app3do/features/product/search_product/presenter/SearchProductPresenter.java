@@ -43,7 +43,7 @@ public class SearchProductPresenter extends BasePresenterT<SearchProductView> {
             getView().isLoading(true);
         }
 
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<JsonElement> response = new HandleResponse<JsonElement>(apiService.getProductByKeyword(keyword, page)) {
             @Override
             public void isSuccess(JsonElement obj) {
@@ -86,7 +86,7 @@ public class SearchProductPresenter extends BasePresenterT<SearchProductView> {
     public void updateProductInCart(String accessToken, Cart cart) {
         Gson gson = new Gson();
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(cart));
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<JsonElement> response = new HandleResponse<JsonElement>(apiService.updateProductInCart(accessToken, body)) {
             @Override
             public void isSuccess(JsonElement obj) {

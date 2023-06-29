@@ -1,5 +1,6 @@
 package com.example.app3do.custom;
 
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -15,6 +17,8 @@ import com.example.app3do.models.order.DataOrder;
 import com.example.app3do.models.personal.AddressesPersonal;
 
 import java.text.NumberFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
 
@@ -38,7 +42,6 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.MyHolder> 
         this.list = list;
     }
 
-
     @NonNull
     @Override
     public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -56,7 +59,10 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.MyHolder> 
             holder.txt_code.setText("Đơn " + order.getCode());
             holder.txt_total_money.setText(format.format(order.getTotal_money()));
             holder.txt_status.setText(order.getStatus());
-            holder.txt_date.setText(order.getCreatedAt().getDate());
+
+            String[] date = order.getCreatedAt().getDate().split(" ");
+
+            holder.txt_date.setText(date[0]);
             holder.txt_name.setText(order.getProducts().get(0).getName());
             holder.txt_total_point.setText(String.valueOf(order.getTotal_point()));
 

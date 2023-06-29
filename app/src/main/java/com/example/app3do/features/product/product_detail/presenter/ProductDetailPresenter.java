@@ -19,7 +19,7 @@ public class ProductDetailPresenter extends BasePresenterT<ProductDetailView> {
     }
 
     public void createQuantityCart(String accessToken){
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<JsonElement> response = new HandleResponse<JsonElement>(apiService.getListProductToCart(accessToken)) {
             @Override
             public void isSuccess(JsonElement obj) {
@@ -53,7 +53,7 @@ public class ProductDetailPresenter extends BasePresenterT<ProductDetailView> {
     public void updateProductInCart(String accessToken, Cart cart, boolean isBuyNow) {
         Gson gson = new Gson();
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(cart));
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<JsonElement> response = new HandleResponse<JsonElement>(apiService.updateProductInCart(accessToken, body)) {
             @Override
             public void isSuccess(JsonElement obj) {

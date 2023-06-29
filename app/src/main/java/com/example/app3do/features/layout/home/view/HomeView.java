@@ -18,4 +18,5 @@ public interface HomeView {
     void createCategory(List<DataCategory> list);
 
     void createQuantityCart(int quantity);
+    void createQuantifyNotification(int quantity);
 }

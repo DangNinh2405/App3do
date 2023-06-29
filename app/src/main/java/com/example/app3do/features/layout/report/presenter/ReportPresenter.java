@@ -17,7 +17,7 @@ public class ReportPresenter extends BasePresenterT<ReportView> {
         if (isViewAttached()) {
             getView().loading(true);
 
-            APIService apiService = BaseAPIClient.getInstance().getAPIService();
+            APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
             HandleResponse<BodyReports> response = new HandleResponse<BodyReports>(apiService.getReports(accessToken, startDate, endDate)) {
                 @Override
                 public void isSuccess(BodyReports obj) {

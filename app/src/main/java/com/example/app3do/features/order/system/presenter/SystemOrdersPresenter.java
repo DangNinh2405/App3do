@@ -41,7 +41,7 @@ public class SystemOrdersPresenter extends BasePresenterT<SystemOrdersView> {
             getView().isLoading(true);
         }
 
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<JsonElement> response = new HandleResponse<JsonElement>(apiService.getSubOrders(accessToken, page, startDate, endDate)) {
             @Override
             public void isSuccess(JsonElement obj) {
@@ -80,7 +80,7 @@ public class SystemOrdersPresenter extends BasePresenterT<SystemOrdersView> {
     }
 
     public void cancelSubOrder(int id, String accessToken){
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<JsonElement> response = new HandleResponse<JsonElement>(apiService.deleteSubOrder(id, accessToken)) {
             @Override
             public void isSuccess(JsonElement obj) {
@@ -104,7 +104,7 @@ public class SystemOrdersPresenter extends BasePresenterT<SystemOrdersView> {
         Gson gson = new Gson();
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(order));
 
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<JsonElement> response = new HandleResponse<JsonElement>(apiService.putSubOrder(id, accessToken, body)) {
             @Override
             public void isSuccess(JsonElement obj) {

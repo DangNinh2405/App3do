@@ -8,19 +8,21 @@ import com.example.app3do.features.layout.home.view.HomeView;
 import com.example.app3do.models.cart.BodyCart;
 import com.example.app3do.models.home.BodyCategory;
 import com.example.app3do.models.home.BodySlide;
+import com.example.app3do.models.notification.BodyNotification;
 import com.example.app3do.models.product.BodyProduct;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
 public class HomePresenter extends BasePresenterT<HomeView> {
     private final String SORT_BY = "created_at";
+    private final int PAGE = 1;
     private final int IS_HOT = 1;
     public HomePresenter(HomeView view) {
         super(view);
     }
 
     public void createSlider(){
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<BodySlide> response = new HandleResponse<BodySlide>(apiService.getListSlider()) {
             @Override
             public void isSuccess(BodySlide obj) {
@@ -41,7 +43,7 @@ public class HomePresenter extends BasePresenterT<HomeView> {
     }
 
     public void createHotSaleProduct(int page, boolean hotOne){
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<BodyProduct> response = new HandleResponse<BodyProduct>(apiService.getListHotProduct(IS_HOT, page)) {
             @Override
             public void isSuccess(BodyProduct obj) {
@@ -66,7 +68,7 @@ public class HomePresenter extends BasePresenterT<HomeView> {
     }
 
     public void createNewProduct(int page){
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<BodyProduct> response = new HandleResponse<BodyProduct>(apiService.getListNewProduct(SORT_BY, page)) {
             @Override
             public void isSuccess(BodyProduct obj) {
@@ -87,7 +89,7 @@ public class HomePresenter extends BasePresenterT<HomeView> {
     }
 
     public void createCategory(){
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<BodyCategory> response = new HandleResponse<BodyCategory>(apiService.getListCategory()) {
             @Override
             public void isSuccess(BodyCategory obj) {
@@ -108,7 +110,7 @@ public class HomePresenter extends BasePresenterT<HomeView> {
     }
 
     public void createQuantityCart(String accessToken){
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<JsonElement> response = new HandleResponse<JsonElement>(apiService.getListProductToCart(accessToken)) {
             @Override
             public void isSuccess(JsonElement obj) {
@@ -133,6 +135,27 @@ public class HomePresenter extends BasePresenterT<HomeView> {
                 if (isViewAttached()){
                     getView().getMessage(error);
                 }
+            }
+        };
+
+        response.callAPI();
+    }
+
+    public void createQuantifyNotification(String accessToken) {
+        if (!isViewAttached()) {
+            return;
+        }
+
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
+        HandleResponse<BodyNotification> response = new HandleResponse<BodyNotification>(apiService.getNotifications(accessToken, PAGE)) {
+            @Override
+            public void isSuccess(BodyNotification obj) {
+                getView().createQuantifyNotification(obj.getMeta().getUnread());
+            }
+
+            @Override
+            public void isFailed(String error) {
+                getView().getMessage(error);
             }
         };
 

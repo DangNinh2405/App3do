@@ -5,6 +5,7 @@ import com.example.app3do.models.cart.Order;
 import com.example.app3do.models.home.BodyCategory;
 import com.example.app3do.models.home.BodySlide;
 import com.example.app3do.models.marketing.BodyMarketing;
+import com.example.app3do.models.notification.BodyNotification;
 import com.example.app3do.models.order.BodyOrder;
 import com.example.app3do.models.personal.AddAddress;
 import com.example.app3do.models.personal.BodyPersonal;
@@ -31,7 +32,6 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface APIService {
-
     @GET("/api/slider/home-slider")
     Call<BodySlide> getListSlider();
 
@@ -76,6 +76,12 @@ public interface APIService {
 
     @GET("/api/provinces/districts")
     Call<BodyWardDistrictProvince> getListDistrict(@Query("access_token") String access_token, @Query("province_id") String provinceId);
+
+    @GET("/api/notifications")
+    Call<BodyNotification> readPageNotification(@Query("access_token") String access_token, @Query("page") int page, @Query("read") int read);
+
+    @GET("/api/notifications")
+    Call<BodyNotification> getNotifications(@Query("access_token") String access_token, @Query("page") int page);
 
     @POST("/api/cart")
     Call<JsonElement> updateProductInCart(@Query("access_token") String access_token, @Body RequestBody body);

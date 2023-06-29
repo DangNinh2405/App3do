@@ -24,7 +24,7 @@ import retrofit2.Call;
 public class SeeAllProductPresenter extends BasePresenterT<SeeAllProductView> {
     private final String sort_by = "created_at";
     private final int is_hot = 1;
-    private APIService apiService = BaseAPIClient.getInstance().getAPIService();
+    private APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
     private int page;
     private int totalPage;
     private List<DataProduct> list;
@@ -89,7 +89,7 @@ public class SeeAllProductPresenter extends BasePresenterT<SeeAllProductView> {
     public void updateProductInCart(String accessToken, Cart cart) {
         Gson gson = new Gson();
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(cart));
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<JsonElement> response = new HandleResponse<JsonElement>(apiService.updateProductInCart(accessToken, body)) {
             @Override
             public void isSuccess(JsonElement obj) {

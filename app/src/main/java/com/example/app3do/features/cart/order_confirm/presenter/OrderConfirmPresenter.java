@@ -21,7 +21,7 @@ public class OrderConfirmPresenter extends BasePresenterT<OrderConfirmView> {
     public void handleOrderPayment(Order order){
         Gson gson = new Gson();
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(order));
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<JsonElement> response = new HandleResponse<JsonElement>(apiService.orderPayment(WITH, order.getAccessToken(), body)) {
             @Override
             public void isSuccess(JsonElement obj) {

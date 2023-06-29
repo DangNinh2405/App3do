@@ -9,7 +9,7 @@ import com.example.app3do.features.layout.home.fragment.HomeFragment;
 import com.example.app3do.features.layout.operation.fragment.OperationFragment;
 import com.example.app3do.features.layout.personal.fragment.PersonalFragment;
 import com.example.app3do.features.layout.report.fragment.ReportFragment;
-import com.example.app3do.features.marketing.fragment.MarketingFragment;
+import com.example.app3do.features.layout.marketing.fragment.MarketingFragment;
 
 public class BottomNavigationHomeAdapter extends FragmentStateAdapter {
     public BottomNavigationHomeAdapter(@NonNull FragmentActivity fragmentActivity) {

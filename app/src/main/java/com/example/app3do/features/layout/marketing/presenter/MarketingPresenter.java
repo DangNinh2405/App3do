@@ -35,7 +35,7 @@ public class MarketingPresenter extends BasePresenterT<MarketingView> {
 
             getView().loading(true, rcvIsGone);
 
-            APIService apiService = BaseAPIClient.getInstance().getAPIService();
+            APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
             HandleResponse<BodyMarketing> response = new HandleResponse<BodyMarketing>(apiService.getMemberMarketing(accessToken, page, sort, startDate, endDate)) {
                 @Override
                 public void isSuccess(BodyMarketing obj) {

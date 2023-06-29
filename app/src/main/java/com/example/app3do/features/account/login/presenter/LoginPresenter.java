@@ -15,7 +15,7 @@ public class LoginPresenter extends BasePresenterT<LoginView> {
     }
 
     public void handleLogin(Login login){
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<BodyLogin> response = new HandleResponse<BodyLogin>(apiService.login(login.getUserName(), login.getPassword())) {
             @Override
             public void isSuccess(BodyLogin obj) {

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "696053983172",
+    "project_id": "myapp3do-9bdf4",
+    "storage_bucket": "myapp3do-9bdf4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:696053983172:android:100f1b1713d03ef4a0a691",
+        "android_client_info": {
+          "package_name": "com.example.app3do"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "696053983172-ui85ls7mi65qd4vj5t2niklr5k0a7939.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNkyWyD0KancdP8YPnnVdYNQu21a48UiY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "696053983172-ui85ls7mi65qd4vj5t2niklr5k0a7939.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

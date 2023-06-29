@@ -20,7 +20,7 @@ public class RegisterPresenter extends BasePresenterT<RegisterView> {
         Gson gson = new Gson();
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(register));
 
-        APIService apiService = BaseAPIClient.getInstance().getAPIService();
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
         HandleResponse<Register> response = new HandleResponse<Register>(apiService.register(body)) {
             @Override
             public void isSuccess(Register obj) {
