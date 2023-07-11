@@ -18,6 +18,7 @@ import com.example.app3do.models.report.BodyReports;
 import com.example.app3do.models.verify.BodyVerify;
 import com.google.gson.JsonElement;
 
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -26,8 +27,11 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.HTTP;
+import retrofit2.http.Headers;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -126,4 +130,12 @@ public interface APIService {
 
     @PUT("/api/order/sub-orders/{id}")
     Call<JsonElement> putSubOrder(@Path("id") int id, @Query("access_token") String accessToken, @Body RequestBody order);
+
+    @PUT("/api/auth/me")
+    Call<JsonElement> updateProfile(@Query("with") String with, @Query("access_token") String accessToken, @Body RequestBody body);
+
+    @Multipart
+    @POST("/api/upload")
+    Call<JsonElement> uploadImage(@Part MultipartBody.Part image);
+
 }

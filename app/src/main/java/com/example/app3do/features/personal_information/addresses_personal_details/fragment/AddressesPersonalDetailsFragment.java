@@ -24,13 +24,9 @@ import com.example.app3do.until.broadcast.UpdatePersonal;
 import com.example.app3do.until.direction.Direction;
 
 public class AddressesPersonalDetailsFragment extends BaseFragment implements AddressesPersonalDetailsView, UpdatePersonal {
-    private DataPersonal personal;
     HomeActivity homeActivity;
     BroadcastUpdatePersonal receiver = new BroadcastUpdatePersonal(this);
     AddressesPersonalDetailsPresenter presenter;
-    public AddressesPersonalDetailsFragment(DataPersonal personal){
-        this.personal = personal;
-    }
 
     Button btn_add_address;
     RecyclerView rcv_addresses;
@@ -80,12 +76,11 @@ public class AddressesPersonalDetailsFragment extends BaseFragment implements Ad
     }
 
     private void initView(){
+        presenter.getPersonalInformation(homeActivity.getAccessToken());
         int width = getActivity().getWindowManager().getDefaultDisplay().getWidth();
 
         rcv_addresses.getLayoutParams().width = (int) Math.round(width * 0.92270531401);
         btn_add_address.getLayoutParams().width = (int) Math.round(width * 0.85507246376);
-
-        renderView(personal);
     }
 
     private void eventAdapter(AddressesPersonalAdapter addressAdapter) {
@@ -119,7 +114,6 @@ public class AddressesPersonalDetailsFragment extends BaseFragment implements Ad
     @Override
     public void renderView(DataPersonal dataPersonal) {
         if (dataPersonal != null) {
-            personal = dataPersonal;
             if (adapter == null) {
                 adapter = new AddressesPersonalAdapter(dataPersonal.getAddresses());
                 rcv_addresses.setAdapter(adapter);

@@ -3,7 +3,6 @@ package com.example.app3do.models.personal;
 import com.google.gson.annotations.SerializedName;
 
 public class BodyPersonal {
-
     @SerializedName("meta")
     private MetaPersonal meta;
 

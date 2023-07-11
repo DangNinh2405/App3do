@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:src="@color/orange"
+                    android:scaleType="centerCrop"
                     android:id="@+id/img_user"
                     android:layout_width="65dp"
                     android:layout_height="65dp"/>

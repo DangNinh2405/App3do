@@ -23,15 +23,11 @@ import com.example.app3do.until.broadcast.UpdatePersonal;
 import com.example.app3do.until.direction.Direction;
 
 public class BanksPersonalDetailsFragment extends BaseFragment implements BanksPersonalDetailsView, UpdatePersonal {
-    private DataPersonal personal;
     BanksPersonalAdapter adapter;
     BroadcastUpdatePersonal receiver = new BroadcastUpdatePersonal(this);
     BanksPersonalDetailsPresenter presenter;
     HomeActivity homeActivity;
 
-    public BanksPersonalDetailsFragment(DataPersonal personal){
-        this.personal = personal;
-    }
 
     RecyclerView rcv_banks;
     Button btn_add_banks;
@@ -84,7 +80,7 @@ public class BanksPersonalDetailsFragment extends BaseFragment implements BanksP
         rcv_banks.getLayoutParams().width = (int) Math.round(width * 0.92270531401);
         btn_add_banks.getLayoutParams().width = (int) Math.round(width * 0.85507246376);
 
-        renderView(personal);
+        presenter.getPersonalInformation(homeActivity.getAccessToken());
     }
 
     @Override
@@ -98,7 +94,6 @@ public class BanksPersonalDetailsFragment extends BaseFragment implements BanksP
     @Override
     public void renderView(DataPersonal dataPersonal) {
         if (dataPersonal != null) {
-            personal = dataPersonal;
             if (adapter == null) {
                 adapter = new BanksPersonalAdapter(dataPersonal.getBanks());
                 rcv_banks.setAdapter(adapter);

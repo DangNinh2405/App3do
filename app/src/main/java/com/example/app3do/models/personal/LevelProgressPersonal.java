@@ -2,7 +2,9 @@ package com.example.app3do.models.personal;
 
 import com.google.gson.annotations.SerializedName;
 
-public class LevelProgressPersonal {
+import java.io.Serializable;
+
+public class LevelProgressPersonal implements Serializable {
 
     @SerializedName("level")
     private int level;

@@ -2,7 +2,9 @@ package com.example.app3do.models.personal;
 
 import com.google.gson.annotations.SerializedName;
 
-public class IdentityPersonal {
+import java.io.Serializable;
+
+public class IdentityPersonal implements Serializable {
 
     @SerializedName("number")
     private String number;
