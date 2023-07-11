@@ -11,11 +11,9 @@ import com.example.app3do.features.personal_information.personal_personal_detail
 import com.example.app3do.models.personal.DataPersonal;
 
 public class TablayoutPersonalAdapter extends FragmentStateAdapter {
-    private DataPersonal personal;
 
-    public TablayoutPersonalAdapter(@NonNull FragmentActivity fragmentActivity, DataPersonal personal) {
+    public TablayoutPersonalAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
-        this.personal = personal;
     }
 
     @NonNull
@@ -23,13 +21,13 @@ public class TablayoutPersonalAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 0:
-                return new PersonalPersonalDetailsFragment(this.personal);
+                return new PersonalPersonalDetailsFragment();
             case 1:
-                return new AddressesPersonalDetailsFragment(this.personal);
+                return new AddressesPersonalDetailsFragment();
             case 2:
-                return new BanksPersonalDetailsFragment(this.personal);
+                return new BanksPersonalDetailsFragment();
             default:
-                return new PersonalPersonalDetailsFragment(this.personal);
+                return new PersonalPersonalDetailsFragment();
         }
     }
 

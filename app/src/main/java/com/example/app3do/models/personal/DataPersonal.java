@@ -6,7 +6,6 @@ import java.io.Serializable;
 import java.util.List;
 
 public class DataPersonal implements Serializable {
-
     @SerializedName("id")
     private int id;
 

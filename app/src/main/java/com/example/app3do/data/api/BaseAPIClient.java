@@ -1,5 +1,7 @@
 package com.example.app3do.data.api;
 
+import com.google.gson.GsonBuilder;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,7 +52,7 @@ public class BaseAPIClient {
         if(retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(url)
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().setLenient().create()))
                     .client(getOkHttpClient(false))
                     .build();
         }
@@ -79,6 +81,7 @@ public class BaseAPIClient {
 
         HttpLoggingInterceptor httpLogging = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
         return new OkHttpClient.Builder()
+                .retryOnConnectionFailure(true)
                 .addInterceptor(interceptor)
                 .addInterceptor(httpLogging)
                 .build();

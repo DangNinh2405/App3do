@@ -133,30 +133,6 @@ public class HomeFragment extends BaseFragment implements HomeView, UpdateCart, 
 
         rltl_notification.setOnClickListener( v -> {
             Direction.getInstance().directionToFragment(getParentFragmentManager(), R.id.frame_home, new NotificationFragment(), null, "notification");
-
-//            APIFirebase apiFirebase = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_FIREBASE, APIFirebase.class);
-//
-//            String to = "ebvJbGRZR_2aX7URU-Nnhw:APA91bEDMF-ZrwJ94gZT6lPIZwsFPX5GGJANcxrxCKjtPI2lZFSV_Uyy2kHbYZDkL4MdHQiKEE7xE-W8Gruxf4THS8rblzep-4IurJqlg5oKoDIVXESPGB_wIl9F4N0BFDfkhVKDIIzM";
-//            RawDataFirebaseMessage data = new RawDataFirebaseMessage("Thông báo", "Thông báo");
-//
-//            RawFirebaseMessage rawFirebaseMessage = new RawFirebaseMessage(to, data);
-//
-//            Gson gson = new Gson();
-//
-//            RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(rawFirebaseMessage));
-//            HandleResponse<BodyFirebaseMessage> response = new HandleResponse<BodyFirebaseMessage>(apiFirebase.sendNotification(body)) {
-//                @Override
-//                public void isSuccess(BodyFirebaseMessage obj) {
-//                    getMessage("Thành công");
-//                }
-//
-//                @Override
-//                public void isFailed(String error) {
-//                    getMessage(error);
-//                }
-//            };
-//
-//            response.callAPI();
         });
     }
 

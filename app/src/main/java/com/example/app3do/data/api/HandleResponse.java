@@ -1,5 +1,7 @@
 package com.example.app3do.data.api;
 
+import android.util.Log;
+
 import com.example.app3do.models.account.ErrorBody;
 import com.google.gson.Gson;
 
@@ -50,25 +52,23 @@ public abstract class HandleResponse <T> {
 
             @Override
             public void onFailure(Call<T> call, Throwable t) {
+                String error = "";
                 if (t instanceof HttpException) {
                     ResponseBody responseBody = ((HttpException) t).response().errorBody();
                     try {
                         String errorBody = responseBody.string();
                         Gson gson = new Gson();
                         ErrorBody body = gson.fromJson(errorBody, ErrorBody.class);
-
-                        String error = "";
                         if(body.getError().lastIndexOf(":") == -1) {
                             error = body.getError();
                         } else {
                             String[] arrError = body.getError().split(":");
                             error = arrError[1];
                         }
-
-                        isFailed(error);
                     } catch (IOException e) {
                         isFailed(e.getMessage());
                     }
+                    isFailed(error);
                 }
             }
         });

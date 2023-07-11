@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
 
     <application
         android:name=".until.application.MyApplication"
@@ -42,6 +44,7 @@
         <receiver android:name=".until.broadcast.BroadcastUpdatePersonal"/>
         <receiver android:name=".until.broadcast.BroadcastOrder"/>
         <receiver android:name=".until.broadcast.BroadcastSubOrder"/>
+        <receiver android:name=".until.broadcast.BroadcastUpdateProfile"/>
     </application>
 
 </manifest>

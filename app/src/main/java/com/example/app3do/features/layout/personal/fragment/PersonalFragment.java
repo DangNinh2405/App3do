@@ -1,7 +1,6 @@
 package com.example.app3do.features.layout.personal.fragment;
 
 import android.content.IntentFilter;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -15,22 +14,24 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.bumptech.glide.Glide;
 import com.example.app3do.R;
 import com.example.app3do.base.BaseFragment;
-import com.example.app3do.constans.Constants;
 import com.example.app3do.features.personal_information.personal_details.fragment.PersonalDetailsFragment;
 import com.example.app3do.features.layout.home.activity.HomeActivity;
 import com.example.app3do.features.layout.personal.presenter.PersonalPresenter;
 import com.example.app3do.features.layout.personal.view.PersonalView;
 import com.example.app3do.models.personal.DataPersonal;
+import com.example.app3do.until.broadcast.BroadcastUpdateProfile;
 import com.example.app3do.until.broadcast.BroadcastUpdatePersonal;
 import com.example.app3do.until.broadcast.UpdatePersonal;
+import com.example.app3do.until.broadcast.UpdateProfile;
 import com.example.app3do.until.direction.Direction;
 
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class PersonalFragment extends BaseFragment implements PersonalView, UpdatePersonal {
+public class PersonalFragment extends BaseFragment implements PersonalView, UpdatePersonal, UpdateProfile {
     Locale locale;
     BroadcastUpdatePersonal receiver = new BroadcastUpdatePersonal(this);
+    BroadcastUpdateProfile updateProfile = new BroadcastUpdateProfile(this);
     NumberFormat format;
     PersonalPresenter presenter;
     HomeActivity homeActivity;
@@ -56,15 +57,21 @@ public class PersonalFragment extends BaseFragment implements PersonalView, Upda
     @Override
     public void onStart() {
         IntentFilter filter = new IntentFilter();
+        IntentFilter filter2 = new IntentFilter();
+
         filter.addAction(BroadcastUpdatePersonal.ACTION_UPDATE_BANKS);
         filter.addAction(BroadcastUpdatePersonal.ACTION_UPDATE_ADDRESSES);
+        filter2.addAction(BroadcastUpdateProfile.ACTION_PROFILE);
+
         LocalBroadcastManager.getInstance(getContext()).registerReceiver(receiver, filter);
+        LocalBroadcastManager.getInstance(getContext()).registerReceiver(updateProfile, filter2);
         super.onStart();
     }
 
     @Override
     public void onStop() {
         LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(receiver);
+        LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(updateProfile);
 
         super.onStop();
     }
@@ -105,14 +112,8 @@ public class PersonalFragment extends BaseFragment implements PersonalView, Upda
 
     private void event() {
         txt_personal_details.setOnClickListener(v -> {
-            if (personal != null) {
-                PersonalDetailsFragment fragment = new PersonalDetailsFragment();
-                Bundle bundle = new Bundle();
-                bundle.putSerializable(Constants.PERSONAL, personal);
-                fragment.setArguments(bundle);
+            Direction.getInstance().directionToFragment(getParentFragmentManager(), R.id.frame_home, new PersonalDetailsFragment(), null, "personal_details");
 
-                Direction.getInstance().directionToFragment(getParentFragmentManager(), R.id.frame_home, fragment, null, "personal_details");
-            }
         });
     }
 
@@ -170,39 +171,39 @@ public class PersonalFragment extends BaseFragment implements PersonalView, Upda
                     break;
                 case 2:
                     img_rating.setImageResource(R.drawable.rating_2_2x);
-                    rating =  " II";
+                    rating = " II";
                     break;
                 case 3:
                     img_rating.setImageResource(R.drawable.rating_3_2x);
-                    rating =  " III";
+                    rating = " III";
                     break;
                 case 4:
                     img_rating.setImageResource(R.drawable.rating_4_2x);
-                    rating =  " IV";
+                    rating = " IV";
                     break;
                 case 5:
                     img_rating.setImageResource(R.drawable.rating_5_2x);
-                    rating =  " V";
+                    rating = " V";
                     break;
                 case 6:
                     img_rating.setImageResource(R.drawable.rating_6_2x);
-                    rating =  " VI";
+                    rating = " VI";
                     break;
                 case 7:
                     img_rating.setImageResource(R.drawable.rating_7_2x);
-                    rating =  " VII";
+                    rating = " VII";
                     break;
                 case 8:
                     img_rating.setImageResource(R.drawable.rating_8_2x);
-                    rating =  " VIII";
+                    rating = " VIII";
                     break;
                 case 9:
                     img_rating.setImageResource(R.drawable.rating_9_2x);
-                    rating =  " IX";
+                    rating = " IX";
                     break;
                 case 10:
                     img_rating.setImageResource(R.drawable.rating_10_2x);
-                    rating =  " X";
+                    rating = " X";
                     break;
             }
 
@@ -217,6 +218,11 @@ public class PersonalFragment extends BaseFragment implements PersonalView, Upda
 
     @Override
     public void updateBanks() {
+        presenter.getPersonalInformation(homeActivity.getAccessToken());
+    }
+
+    @Override
+    public void updateProfile() {
         presenter.getPersonalInformation(homeActivity.getAccessToken());
     }
 }

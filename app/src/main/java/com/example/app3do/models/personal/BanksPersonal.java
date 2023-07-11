@@ -2,7 +2,9 @@ package com.example.app3do.models.personal;
 
 import com.google.gson.annotations.SerializedName;
 
-public class BanksPersonal {
+import java.io.Serializable;
+
+public class BanksPersonal implements Serializable {
 
     @SerializedName("id")
     private int id;

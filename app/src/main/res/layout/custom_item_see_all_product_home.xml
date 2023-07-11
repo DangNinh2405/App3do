@@ -28,8 +28,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_medium"
         android:inputType="textMultiLine"
-        android:maxLines="3"
-        android:minHeight="50dp"
+        android:maxLines="2"
         android:text=""
         android:textColor="@color/darkBlue"
         android:textSize="12sp" />
