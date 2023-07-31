@@ -1,6 +1,7 @@
 package com.example.app3do.features.layout.personal.fragment;
 
 import android.content.IntentFilter;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -14,6 +15,9 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.bumptech.glide.Glide;
 import com.example.app3do.R;
 import com.example.app3do.base.BaseFragment;
+import com.example.app3do.features.personal_information.app_information.fragment.AppInformationFragment;
+import com.example.app3do.features.personal_information.contact_help.fragment.ContactHelpFragment;
+import com.example.app3do.features.post.post_category.fragment.PostCategoryFragment;
 import com.example.app3do.features.personal_information.personal_details.fragment.PersonalDetailsFragment;
 import com.example.app3do.features.layout.home.activity.HomeActivity;
 import com.example.app3do.features.layout.personal.presenter.PersonalPresenter;
@@ -29,6 +33,11 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 public class PersonalFragment extends BaseFragment implements PersonalView, UpdatePersonal, UpdateProfile {
+    public final static String TYPE_NEWS = "NEWS";
+    public final static String TYPE_POLICY = "POLICY";
+    public final static String TYPE_VIDEO = "VIDEO";
+    public final static String TYPE_ORIENTATION = "ORIENTATION";
+    public final static String KEY = "KEY";
     Locale locale;
     BroadcastUpdatePersonal receiver = new BroadcastUpdatePersonal(this);
     BroadcastUpdateProfile updateProfile = new BroadcastUpdateProfile(this);
@@ -40,7 +49,7 @@ public class PersonalFragment extends BaseFragment implements PersonalView, Upda
     ProgressBar pg_level;
     DataPersonal personal;
     LinearLayout lnl_wallet_point;
-    TextView txt_user_name, txt_user_id, txt_current_level_commission, txt_next_level_commission, txt_owner_commission, txt_total_ord_amount, txt_personal_details, txt_material;
+    TextView txt_user_name, txt_orientation, txt_video, txt_policy, txt_event_news, txt_app_information, txt_user_id, txt_current_level_commission, txt_next_level_commission, txt_owner_commission, txt_total_ord_amount, txt_personal_details, txt_material, txt_contact_help;
 
     @Override
     public int getLayoutId() {
@@ -96,6 +105,12 @@ public class PersonalFragment extends BaseFragment implements PersonalView, Upda
         txt_material = view.findViewById(R.id.txt_material);
         img_rating = view.findViewById(R.id.img_rating);
         img_material = view.findViewById(R.id.img_material);
+        txt_contact_help = view.findViewById(R.id.txt_contact_help);
+        txt_app_information = view.findViewById(R.id.txt_app_information);
+        txt_event_news = view.findViewById(R.id.txt_event_news);
+        txt_policy = view.findViewById(R.id.txt_policy);
+        txt_orientation = view.findViewById(R.id.txt_orientation);
+        txt_video = view.findViewById(R.id.txt_video);
     }
 
     private void initView() {
@@ -113,8 +128,41 @@ public class PersonalFragment extends BaseFragment implements PersonalView, Upda
     private void event() {
         txt_personal_details.setOnClickListener(v -> {
             Direction.getInstance().directionToFragment(getParentFragmentManager(), R.id.frame_home, new PersonalDetailsFragment(), null, "personal_details");
-
         });
+
+        txt_contact_help.setOnClickListener( v -> {
+            Direction.getInstance().directionToFragment(getParentFragmentManager(), R.id.frame_home, new ContactHelpFragment(), null, "contact_help");
+        });
+
+        txt_app_information.setOnClickListener( v -> {
+            Direction.getInstance().directionToFragment(getParentFragmentManager(), R.id.frame_home, new AppInformationFragment(), null, "app_information");
+        });
+
+        txt_event_news.setOnClickListener( v -> {
+            directionToFragment(TYPE_NEWS, TYPE_NEWS.toLowerCase());
+        });
+
+        txt_policy.setOnClickListener( v -> {
+            directionToFragment(TYPE_POLICY, TYPE_POLICY.toLowerCase());
+        });
+
+        txt_orientation.setOnClickListener( v -> {
+            directionToFragment(TYPE_ORIENTATION, TYPE_ORIENTATION.toLowerCase());
+        });
+
+        txt_video.setOnClickListener( v -> {
+            directionToFragment(TYPE_VIDEO, TYPE_VIDEO.toLowerCase());
+        });
+    }
+
+    private void directionToFragment(String key, String backStack) {
+        PostCategoryFragment fragment = new PostCategoryFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(KEY, key);
+        fragment.setArguments(bundle);
+
+        Direction.getInstance().directionToFragment(getParentFragmentManager(), R.id.frame_home, fragment, null, backStack);
+
     }
 
     @Override

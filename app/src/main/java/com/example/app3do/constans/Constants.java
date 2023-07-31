@@ -5,6 +5,7 @@ public class Constants {
     public static final String USER = "USER";
     public static final String CART = "CART";
     public static final String IMAGE = "image";
+    public static final String POSTS = "POSTS";
     public static final int FRONT_IMAGE = 0;
     public static final int BACK_IMAGE = 1;
     public static final int AVATAR_IMAGE = 2;

@@ -30,6 +30,7 @@ import com.example.app3do.features.layout.marketing.presenter.MarketingPresenter
 import com.example.app3do.features.layout.marketing.view.MarketingView;
 import com.example.app3do.models.marketing.MetaMarketing;
 import com.example.app3do.models.personal.DataPersonal;
+import com.example.app3do.models.report.PointReports;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -352,16 +353,9 @@ public class MarketingFragment extends BaseFragment implements MarketingView {
     }
 
     @Override
-    public void createMemberMarketingView(MetaMarketing meta, List<DataPersonal> dataList) {
-        if (meta != null) {
+    public void createMemberMarketingView(PointReports point, List<DataPersonal> dataList) {
+        if (dataList != null) {
             list = dataList;
-            txt_total_money_member_f1.setText(String.valueOf(meta.getPoint().getTotalMoneyMemberF1()));
-            txt_total_point_f1.setText(String.valueOf(meta.getPoint().getTotalPointF1()));
-            txt_moneyGroupChi.setText(String.valueOf(meta.getPoint().getMoneyGroupChi()));
-            txt_countGroupOnly.setText(String.valueOf(meta.getPoint().getCountGroupOnly()));
-            txt_total_money_member_report.setText(String.valueOf(meta.getPoint().getTotalMoneyMemberReport()));
-            txt_total_point.setText(String.valueOf(meta.getPoint().getTotalPoint()));
-
             if (adapter == null) {
                 adapter = new MemberMarketingAdapter(width, countProductHorizontal, isGirdView, dataList);
                 rcv_nember_f1.setAdapter(adapter);
@@ -376,6 +370,18 @@ public class MarketingFragment extends BaseFragment implements MarketingView {
                 adapter.notifyDataSetChanged();
             }
         }
+
+
+        if (point != null) {
+            txt_total_money_member_f1.setText(String.valueOf(point.getTotalMoneyMemberF1()));
+            txt_total_point_f1.setText(String.valueOf(point.getTotalPointF1()));
+            txt_moneyGroupChi.setText(String.valueOf(point.getMoneyGroupChi()));
+            txt_countGroupOnly.setText(String.valueOf(point.getCountGroupOnly()));
+            txt_total_money_member_report.setText(String.valueOf(point.getTotalMoneyMemberReport()));
+            txt_total_point.setText(String.valueOf(point.getTotalPoint()));
+        }
+
+
     }
 
     @Override

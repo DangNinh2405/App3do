@@ -103,7 +103,6 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
         }
     }
 
-
     @Override
     public void createNotificationView(List<DataNotification> data) {
         if (adapter == null) {

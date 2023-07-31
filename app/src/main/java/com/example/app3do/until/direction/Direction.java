@@ -5,7 +5,6 @@ import androidx.fragment.app.FragmentManager;
 
 public class Direction {
     private static Direction instance;
-
     private Direction(){}
 
     public static Direction getInstance() {

@@ -15,7 +15,11 @@ import com.example.app3do.base.BaseFragment;
 import com.example.app3do.features.layout.home.activity.HomeActivity;
 import com.example.app3do.features.layout.report.presenter.ReportPresenter;
 import com.example.app3do.features.layout.report.view.ReportView;
+import com.example.app3do.models.report.CommissionReports;
 import com.example.app3do.models.report.DataReports;
+import com.example.app3do.models.report.OrderReports;
+import com.example.app3do.models.report.PointReports;
+import com.example.app3do.models.report.UsersReports;
 
 import java.text.NumberFormat;
 import java.util.Calendar;
@@ -28,13 +32,12 @@ public class ReportFragment extends BaseFragment implements ReportView {
     RelativeLayout rltl_select_time;
     ProgressBar pg_loading;
     LinearLayout lnl_select, lnl_select_time, lnl_date, lnl_body;
-    TextView txt_time_before, txt_time_after, txt_total_point, txt_total_point_member, txt_total_user, txt_total_money_member_f1, txt_start_date
-            ,txt_total_point_f1, txt_moneyGroupChi, txt_moneyCommissionGroupOnly, txt_moneyGroupOnly, txt_countGroupOnly, txt_end_date
-            , txt_total_money_member_report, txt_all_order, txt_all_money, txt_owner_order, txt_owner_money, txt_direct_order, txt_direct_money;
+    TextView txt_time_before, txt_time_after, txt_total_point, txt_total_point_member, txt_total_user, txt_total_money_member_f1, txt_start_date, txt_total_point_f1, txt_moneyGroupChi, txt_moneyCommissionGroupOnly, txt_moneyGroupOnly, txt_countGroupOnly, txt_end_date, txt_total_money_member_report, txt_all_order, txt_all_money, txt_owner_order, txt_owner_money, txt_direct_order, txt_direct_money;
     boolean isSelectStartDate = false;
     boolean isSelectEndDate = false;
     String startDate = "";
     String endDate = "";
+
     @Override
     public int getLayoutId() {
         return R.layout.fragment_report;
@@ -52,7 +55,7 @@ public class ReportFragment extends BaseFragment implements ReportView {
         initView();
     }
 
-    private void init(View view ) {
+    private void init(View view) {
         presenter = new ReportPresenter(this);
         homeActivity = (HomeActivity) getActivity();
 
@@ -207,34 +210,40 @@ public class ReportFragment extends BaseFragment implements ReportView {
     }
 
     @Override
-    public void createViewReports(DataReports reports) {
-        if (reports != null) {
-            Locale locale = new Locale("vi", "VN");
-            NumberFormat format = NumberFormat.getCurrencyInstance(locale);
+    public void createViewReports(OrderReports order, CommissionReports commission, PointReports point, UsersReports users) {
+        Locale locale = new Locale("vi", "VN");
+        NumberFormat format = NumberFormat.getCurrencyInstance(locale);
 
-            lnl_date.setVisibility(View.VISIBLE);
+        lnl_date.setVisibility(View.VISIBLE);
 
-            txt_total_user.setText(String.valueOf(reports.getUsers().getTotal()));
-            txt_total_money_member_f1.setText(String.valueOf(reports.getPoint().getTotalMoneyMemberF1()));
-            txt_total_point_f1.setText(String.valueOf(reports.getPoint().getTotalPointF1()));
-            txt_moneyGroupChi.setText(String.valueOf(reports.getPoint().getMoneyGroupChi()));
-            txt_moneyCommissionGroupOnly.setText(String.valueOf(reports.getPoint().getMoneyCommissionGroupOnly()));
-            txt_moneyGroupOnly.setText(String.valueOf(reports.getPoint().getMoneyGroupOnly()));
-            txt_countGroupOnly.setText(String.valueOf(reports.getPoint().getCountGroupOnly()));
-            txt_total_money_member_report.setText(String.valueOf(reports.getPoint().getTotalMoneyMemberReport()));
-            txt_total_point.setText(String.valueOf(reports.getPoint().getTotalPoint()));
-            txt_total_point_member.setText(String.valueOf(reports.getPoint().getTotalMoneyMember()));
-
-            txt_all_order.setText(reports.getOrder().getAll().getTotal() + " Đơn");
-            txt_all_money.setText(format.format(reports.getOrder().getAll().getMoney()));
-            txt_owner_order.setText(reports.getOrder().getOwner().getTotal()+ " Đơn");
-            txt_owner_money.setText(format.format(reports.getOrder().getOwner().getMoney()));
-            txt_direct_order.setText(reports.getOrder().getDirect().getTotal()+ " Đơn");
-            txt_direct_money.setText(format.format(reports.getOrder().getDirect().getMoney()));
-
-            txt_end_date.setText(endDate);
-            txt_start_date.setText(startDate);
+        if (users != null) {
+            txt_total_user.setText(String.valueOf(users.getTotal()));
         }
+
+        if (point != null) {
+            txt_total_money_member_f1.setText(String.valueOf(point.getTotalMoneyMemberF1()));
+            txt_total_point_f1.setText(String.valueOf(point.getTotalPointF1()));
+            txt_moneyGroupChi.setText(String.valueOf(point.getMoneyGroupChi()));
+            txt_moneyCommissionGroupOnly.setText(String.valueOf(point.getMoneyCommissionGroupOnly()));
+            txt_moneyGroupOnly.setText(String.valueOf(point.getMoneyGroupOnly()));
+            txt_countGroupOnly.setText(String.valueOf(point.getCountGroupOnly()));
+            txt_total_money_member_report.setText(String.valueOf(point.getTotalMoneyMemberReport()));
+            txt_total_point.setText(String.valueOf(point.getTotalPoint()));
+            txt_total_point_member.setText(String.valueOf(point.getTotalMoneyMember()));
+        }
+
+        if (order != null) {
+            txt_all_order.setText(order.getAll().getTotal() + " Đơn");
+            txt_all_money.setText(format.format(order.getAll().getMoney()));
+            txt_owner_order.setText(order.getOwner().getTotal() + " Đơn");
+            txt_owner_money.setText(format.format(order.getOwner().getMoney()));
+            txt_direct_order.setText(order.getDirect().getTotal() + " Đơn");
+            txt_direct_money.setText(format.format(order.getDirect().getMoney()));
+        }
+
+
+        txt_end_date.setText(endDate);
+        txt_start_date.setText(startDate);
     }
 
     @Override

@@ -47,6 +47,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 
 public class ChangeInformationFragment extends BaseFragment implements ChangeInformationView {
     private final String MALE = "Nam";
@@ -131,15 +132,21 @@ public class ChangeInformationFragment extends BaseFragment implements ChangeInf
         });
 
         img_front_IC.setOnClickListener( v -> {
-            getImage(Constants.FRONT_IMAGE);
+            if (pg_loading_front_image.getVisibility() != View.VISIBLE) {
+                getImage(Constants.FRONT_IMAGE);
+            }
         });
 
         img_back_IC.setOnClickListener( v -> {
-            getImage(Constants.BACK_IMAGE);
+            if (pg_loading_back_image.getVisibility() != View.VISIBLE) {
+                getImage(Constants.BACK_IMAGE);
+            }
         });
 
         cv_avatar.setOnClickListener( v -> {
-            getImage(Constants.AVATAR_IMAGE);
+            if (pg_loading_avatar_image.getVisibility() != View.VISIBLE) {
+                getImage(Constants.AVATAR_IMAGE);
+            }
         });
 
         btn_update.setOnClickListener( v -> {
@@ -228,7 +235,7 @@ public class ChangeInformationFragment extends BaseFragment implements ChangeInf
     public void sendMessage(String message, boolean isSuccess) {
         if (isSuccess) {
             Intent intent = new Intent(BroadcastUpdateProfile.ACTION_PROFILE);
-            LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
+            LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent);
             getParentFragmentManager().popBackStack();
         }
         Toast.makeText(homeActivity, message, Toast.LENGTH_SHORT).show();

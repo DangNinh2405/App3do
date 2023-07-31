@@ -7,6 +7,7 @@ import com.example.app3do.data.api.HandleResponse;
 import com.example.app3do.features.product.product_detail.view.ProductDetailView;
 import com.example.app3do.models.cart.BodyCart;
 import com.example.app3do.models.cart.Cart;
+import com.example.app3do.models.notification.BodyNotification;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
@@ -14,6 +15,7 @@ import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
 public class ProductDetailPresenter extends BasePresenterT<ProductDetailView> {
+    private final int PAGE = 1;
     public ProductDetailPresenter(ProductDetailView view) {
         super(view);
     }
@@ -78,6 +80,27 @@ public class ProductDetailPresenter extends BasePresenterT<ProductDetailView> {
                 if (isViewAttached()) {
                     getView().sendMessage(error);
                 }
+            }
+        };
+
+        response.callAPI();
+    }
+
+    public void createQuantifyNotification(String accessToken) {
+        if (!isViewAttached()) {
+            return;
+        }
+
+        APIService apiService = BaseAPIClient.getInstance().getAPIService(BaseAPIClient.API_SERVICE, APIService.class);
+        HandleResponse<BodyNotification> response = new HandleResponse<BodyNotification>(apiService.getNotifications(accessToken, PAGE)) {
+            @Override
+            public void isSuccess(BodyNotification obj) {
+                getView().createQuantityNotification(obj.getMeta().getUnread());
+            }
+
+            @Override
+            public void isFailed(String error) {
+                getView().sendMessage(error);
             }
         };
 

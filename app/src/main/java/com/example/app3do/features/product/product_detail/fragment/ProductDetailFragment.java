@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,19 +20,22 @@ import com.example.app3do.base.BaseFragment;
 import com.example.app3do.constans.Constants;
 import com.example.app3do.features.cart.cart_detail.fragment.CartDetailFragment;
 import com.example.app3do.features.layout.home.activity.HomeActivity;
+import com.example.app3do.features.notification.fragment.NotificationFragment;
 import com.example.app3do.features.product.product_detail.presenter.ProductDetailPresenter;
 import com.example.app3do.features.product.product_detail.view.ProductDetailView;
 import com.example.app3do.models.cart.Cart;
 import com.example.app3do.models.product.DataProduct;
+import com.example.app3do.until.broadcast.BroadcastNotification;
 import com.example.app3do.until.broadcast.BroadcastUpdateCart;
 import com.example.app3do.until.broadcast.UpdateCart;
+import com.example.app3do.until.broadcast.UpdateNotification;
 import com.example.app3do.until.direction.Direction;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class ProductDetailFragment extends BaseFragment implements ProductDetailView, UpdateCart {
+public class ProductDetailFragment extends BaseFragment implements ProductDetailView, UpdateCart, UpdateNotification {
     Locale locale;
     NumberFormat format;
     ProductDetailPresenter presenter;
@@ -41,6 +45,7 @@ public class ProductDetailFragment extends BaseFragment implements ProductDetail
     DataProduct product;
     BottomSheetDialog dialog;
     BroadcastUpdateCart receiver = new BroadcastUpdateCart(this);
+    BroadcastNotification broadcastNotification = new BroadcastNotification(this);
 
     Button btn_add_to_cart, btn_buy_now;
     boolean isBuyNow = false;
@@ -51,6 +56,7 @@ public class ProductDetailFragment extends BaseFragment implements ProductDetail
     ImageView img_product_bottom;
     Button btn_minus_product_bottom, btn_plus_product_bottom, btn_add_to_cart_bottom;
     EditText etxt_count_product_bottom;
+    RelativeLayout rltl_cart, rltl_notification;
 
     @Override
     public int getLayoutId() {
@@ -70,12 +76,17 @@ public class ProductDetailFragment extends BaseFragment implements ProductDetail
         filter.addAction(BroadcastUpdateCart.ACTION_UPDATE_CART);
 
         LocalBroadcastManager.getInstance(getContext()).registerReceiver(receiver, filter);
+
+        IntentFilter filterNotification = new IntentFilter();
+        filterNotification.addAction(BroadcastNotification.ACTION_UPDATE_NOTIFICATION);
+        LocalBroadcastManager.getInstance(getContext()).registerReceiver(broadcastNotification, filterNotification);
         super.onStart();
     }
 
     @Override
     public void onStop() {
         LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(receiver);
+        LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(broadcastNotification);
         super.onStop();
     }
 
@@ -100,6 +111,8 @@ public class ProductDetailFragment extends BaseFragment implements ProductDetail
         btn_add_to_cart = view.findViewById(R.id.btn_add_to_cart);
         txt_product_real_price = view.findViewById(R.id.txt_product_real_price);
         txt_quantity = view.findViewById(R.id.txt_quantity);
+        rltl_cart = view.findViewById(R.id.rltl_cart);
+        rltl_notification = view.findViewById(R.id.rltl_notification);
 
         product = (DataProduct) getArguments().getSerializable(Constants.PRODUCT);
     }
@@ -110,6 +123,8 @@ public class ProductDetailFragment extends BaseFragment implements ProductDetail
         int width = getActivity().getWindowManager().getDefaultDisplay().getWidth();
         img_product.getLayoutParams().height = (int) Math.round(width * 0.88164251207);
         presenter.createQuantityCart(homeActivity.getAccessToken());
+        presenter.createQuantifyNotification(homeActivity.getAccessToken());
+
         if (product != null) {
             Glide.with(getContext()).load(product.getAvatar().getUrl()).into(img_product);
             txt_product_name.setText(product.getName());
@@ -140,8 +155,12 @@ public class ProductDetailFragment extends BaseFragment implements ProductDetail
             addProductToCart();
         });
 
-        txt_quantity.setOnClickListener(v -> {
+        rltl_cart.setOnClickListener(v -> {
             Direction.getInstance().directionToFragment(getParentFragmentManager(), R.id.frame_home, new CartDetailFragment(), null, "detail_cart");
+        });
+
+        rltl_notification.setOnClickListener(v -> {
+            Direction.getInstance().directionToFragment(getParentFragmentManager(), R.id.frame_home, new NotificationFragment(), null, "notification");
         });
     }
 
@@ -216,6 +235,11 @@ public class ProductDetailFragment extends BaseFragment implements ProductDetail
 
     @Override
     public void createQuantityCart(int quantity) {
+        txt_quantity.setText(String.valueOf(quantity));
+    }
+
+    @Override
+    public void createQuantityNotification(int quantity) {
         txt_quantity.setText(String.valueOf(quantity));
     }
 

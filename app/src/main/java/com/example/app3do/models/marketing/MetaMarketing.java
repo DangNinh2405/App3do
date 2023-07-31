@@ -4,6 +4,8 @@ import com.example.app3do.models.product.Pagination;
 import com.example.app3do.models.report.PointReports;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class MetaMarketing {
     @SerializedName("pagination")
     private Pagination pagination;

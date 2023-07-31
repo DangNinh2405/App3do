@@ -6,4 +6,21 @@
         <item>Theo số lượng F1</item>
         <item>Theo điểm Marketing</item>
     </string-array>
+
+    <string name="content_1">  - Là ứng dụng được đầu tư, nghiên cứu và phát triển bởi công ty 3DO. Là doanh nghiệp hàng đầu trong việc nghiên cứu và cung cấp các sản phẩm thảo dược an toàn và lành tinhscos châ lượng cao. 3DO là nguồn cung cấp các sản phẩm thuộc các lĩnh vực: tiêu dùng thảo dược, Mỹ phẩm, Thực phẩm chức năng, thực phẩm làm đẹp,... có nguồn gốc từ Việt Nam, Hàn Quốc,... và là giải pháp quản lý đôội nhóm bán haàng, đánh giá năng lực đóng góp của các thành viên trong việc phát triên chung của Doanh nghiệp. 3DO là đối tác chiến lược của rất nhiều các nhà máy và nhà nhập khẩu lớn uy tín.</string>
+
+    <string name="content_2">  - Sứ mệnh và tầm nhìn: Cung cấp các sản phẩm chất lượng mang nhiêu giá trị sử dụng cho thị trường, mang lại nguồn thu nhập và việc làm thêm cho mọi người đặc biệt là các mẹ bỉm sữa, sinh viên, dân văn phòng. Đóng góp trong việc phát triển kinh tế xã hội và đất nước.</string>
+
+    <string name="content_3">  - Lợi ích khi hợp tác với 3DO:</string>
+
+    <string name="content_4">      + Bạn có nguồn hàng đa dạng, chất lượng, giá sỉ để lựa chọn sử dụng và quản bá bán hàng.</string>
+
+    <string name="content_5">      + Bắt đầu làm việc và kinh doanh không cần vốn bằng cách giới thệu nhiều người biết đến app 3DO thông qua mã giới thiệu của bạn.</string>
+
+    <string name="content_6">      + Có thu nhập và thưởng tương xứng với công sức và giá trị của bạn bỏ ra.</string>
+
+    <string name="content_7">      + Được đào tạo và cung cấp các kiến thức về bán hàng và sản phẩm.</string>
+
+    <string name="content_8">      + Giá trị đóng góp ược ghi nhập và tôn tại lâu dài.</string>
+
 </resources>

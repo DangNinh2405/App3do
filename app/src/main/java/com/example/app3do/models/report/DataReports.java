@@ -2,6 +2,8 @@ package com.example.app3do.models.report;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class DataReports {
 
     @SerializedName("order")

@@ -61,7 +61,7 @@ public interface APIService {
     Call<JsonElement> getListProductToCart(@Query("access_token") String access_token);
 
     @GET("api/reports/all")
-    Call<BodyReports> getReports(@Query("access_token") String access_token, @Query("start_date") String start_date, @Query("end_date") String end_date);
+    Call<JsonElement> getReports(@Query("access_token") String access_token, @Query("start_date") String start_date, @Query("end_date") String end_date);
 
     @GET("/api/provinces")
     Call<BodyWardDistrictProvince> getListProvince(@Query("access_token") String access_token);
@@ -70,7 +70,7 @@ public interface APIService {
     Call<JsonElement> getOrders(@Query("with") String with, @Query("access_token") String access_token, @Query("page") int page, @Query("start_date") String start_date, @Query("end_date") String end_date);
 
     @GET("/api/direct-users")
-    Call<BodyMarketing> getMemberMarketing(@Query("access_token") String access_token, @Query("page") int page, @Query("sort") String sort, @Query("start_date") String start_date, @Query("end_date") String end_date);
+    Call<JsonElement> getMemberMarketing(@Query("access_token") String access_token, @Query("page") int page, @Query("sort") String sort, @Query("start_date") String start_date, @Query("end_date") String end_date);
 
     @GET("/api/order/sub-orders")
     Call<JsonElement> getSubOrders(@Query("access_token") String access_token, @Query("page") int page, @Query("start_date") String start_date, @Query("end_date") String end_date);
@@ -86,6 +86,9 @@ public interface APIService {
 
     @GET("/api/notifications")
     Call<BodyNotification> getNotifications(@Query("access_token") String access_token, @Query("page") int page);
+
+    @GET("/api/posts")
+    Call<JsonElement> getPosts(@Query("type") String type, @Query("access_token") String access_token, @Query("page") int page);
 
     @POST("/api/cart")
     Call<JsonElement> updateProductInCart(@Query("access_token") String access_token, @Body RequestBody body);
