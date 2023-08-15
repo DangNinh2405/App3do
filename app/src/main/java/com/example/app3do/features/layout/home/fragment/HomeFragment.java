@@ -16,9 +16,9 @@ import com.example.app3do.R;
 import com.example.app3do.base.BaseFragment;
 import com.example.app3do.constans.Category;
 import com.example.app3do.constans.Constants;
-import com.example.app3do.custom.CategoryHomeAdapter;
-import com.example.app3do.custom.ProductHomeAdapter;
-import com.example.app3do.custom.SliderHomeAdapter;
+import com.example.app3do.adapter.CategoryHomeAdapter;
+import com.example.app3do.adapter.ProductHomeAdapter;
+import com.example.app3do.adapter.SliderHomeAdapter;
 import com.example.app3do.features.cart.cart_detail.fragment.CartDetailFragment;
 import com.example.app3do.features.layout.home.activity.HomeActivity;
 import com.example.app3do.features.layout.home.presenter.HomePresenter;
@@ -30,11 +30,11 @@ import com.example.app3do.features.product.see_all_product.fragment.SeeAllProduc
 import com.example.app3do.models.home.DataCategory;
 import com.example.app3do.models.home.DataSlide;
 import com.example.app3do.models.product.DataProduct;
-import com.example.app3do.until.broadcast.BroadcastNotification;
-import com.example.app3do.until.broadcast.BroadcastUpdateCart;
-import com.example.app3do.until.broadcast.UpdateCart;
-import com.example.app3do.until.broadcast.UpdateNotification;
-import com.example.app3do.until.direction.Direction;
+import com.example.app3do.utils.broadcast.BroadcastNotification;
+import com.example.app3do.utils.broadcast.BroadcastUpdateCart;
+import com.example.app3do.utils.broadcast.UpdateCart;
+import com.example.app3do.utils.broadcast.UpdateNotification;
+import com.example.app3do.utils.direction.Direction;
 
 import java.util.List;
 

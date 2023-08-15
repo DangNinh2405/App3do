@@ -8,7 +8,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.app3do.R;
 import com.example.app3do.base.BaseActivity;
 import com.example.app3do.constans.Constants;
-import com.example.app3do.custom.BottomNavigationHomeAdapter;
+import com.example.app3do.adapter.BottomNavigationHomeAdapter;
 import com.example.app3do.models.account.DataLogin;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.3Do" parent="Base.Theme.3Do" />
+
+    <style name="ProgressBarTheme" >
+        <item name="colorSecondary">@color/orange</item>
+    </style>
 </resources>

@@ -9,7 +9,6 @@ public class BodyOrder {
     @SerializedName("meta")
     private MetaOrder meta;
 
-
     @SerializedName("data")
     private List<DataOrder> data;
 

@@ -21,13 +21,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app3do.R;
 import com.example.app3do.base.BaseFragment;
-import com.example.app3do.custom.AddressDialogAdapter;
+import com.example.app3do.adapter.AddressDialogAdapter;
 import com.example.app3do.features.personal_information.new_address_personal_details.presenter.NewAddressPersonalDetailsPresenter;
 import com.example.app3do.features.personal_information.new_address_personal_details.view.NewAddressPersonalDetailsView;
 import com.example.app3do.features.layout.home.activity.HomeActivity;
 import com.example.app3do.models.personal.AddAddress;
 import com.example.app3do.models.personal.WardDistrictProvincePersonal;
-import com.example.app3do.until.broadcast.BroadcastUpdatePersonal;
+import com.example.app3do.utils.broadcast.BroadcastUpdatePersonal;
 
 import java.util.List;
 

@@ -23,15 +23,15 @@ import com.bumptech.glide.Glide;
 import com.example.app3do.R;
 import com.example.app3do.base.BaseFragment;
 import com.example.app3do.constans.Constants;
-import com.example.app3do.custom.SeeAllProductHomeAdapter;
+import com.example.app3do.adapter.SeeAllProductHomeAdapter;
 import com.example.app3do.features.layout.home.activity.HomeActivity;
 import com.example.app3do.features.product.product_detail.fragment.ProductDetailFragment;
 import com.example.app3do.features.product.search_product.presenter.SearchProductPresenter;
 import com.example.app3do.features.product.search_product.view.SearchProductView;
 import com.example.app3do.models.cart.Cart;
 import com.example.app3do.models.product.DataProduct;
-import com.example.app3do.until.broadcast.BroadcastUpdateCart;
-import com.example.app3do.until.direction.Direction;
+import com.example.app3do.utils.broadcast.BroadcastUpdateCart;
+import com.example.app3do.utils.direction.Direction;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.text.NumberFormat;

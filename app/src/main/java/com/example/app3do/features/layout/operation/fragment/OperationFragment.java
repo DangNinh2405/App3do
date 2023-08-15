@@ -2,12 +2,11 @@ package com.example.app3do.features.layout.operation.fragment;
 
 import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.app3do.R;
 import com.example.app3do.base.BaseFragment;
-import com.example.app3do.custom.TablayoutOperationAdapter;
+import com.example.app3do.adapter.TablayoutOperationAdapter;
 import com.example.app3do.features.layout.operation.view.OperationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;

@@ -12,15 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app3do.R;
 import com.example.app3do.base.BaseFragment;
-import com.example.app3do.custom.BanksPersonalAdapter;
+import com.example.app3do.adapter.BanksPersonalAdapter;
 import com.example.app3do.features.personal_information.banks_personal_details.presenter.BanksPersonalDetailsPresenter;
 import com.example.app3do.features.personal_information.banks_personal_details.view.BanksPersonalDetailsView;
 import com.example.app3do.features.personal_information.new_bank_personal_details.fragment.NewBankPersonalDetailsFragment;
 import com.example.app3do.features.layout.home.activity.HomeActivity;
 import com.example.app3do.models.personal.DataPersonal;
-import com.example.app3do.until.broadcast.BroadcastUpdatePersonal;
-import com.example.app3do.until.broadcast.UpdatePersonal;
-import com.example.app3do.until.direction.Direction;
+import com.example.app3do.utils.broadcast.BroadcastUpdatePersonal;
+import com.example.app3do.utils.broadcast.UpdatePersonal;
+import com.example.app3do.utils.direction.Direction;
 
 public class BanksPersonalDetailsFragment extends BaseFragment implements BanksPersonalDetailsView, UpdatePersonal {
     BanksPersonalAdapter adapter;

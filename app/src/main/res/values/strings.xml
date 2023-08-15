@@ -7,6 +7,8 @@
         <item>Theo điểm Marketing</item>
     </string-array>
 
+    <string name="KEY_LOGIN_ACCOUNT">LOGIN_ACCOUNT</string>
+
     <string name="content_1">  - Là ứng dụng được đầu tư, nghiên cứu và phát triển bởi công ty 3DO. Là doanh nghiệp hàng đầu trong việc nghiên cứu và cung cấp các sản phẩm thảo dược an toàn và lành tinhscos châ lượng cao. 3DO là nguồn cung cấp các sản phẩm thuộc các lĩnh vực: tiêu dùng thảo dược, Mỹ phẩm, Thực phẩm chức năng, thực phẩm làm đẹp,... có nguồn gốc từ Việt Nam, Hàn Quốc,... và là giải pháp quản lý đôội nhóm bán haàng, đánh giá năng lực đóng góp của các thành viên trong việc phát triên chung của Doanh nghiệp. 3DO là đối tác chiến lược của rất nhiều các nhà máy và nhà nhập khẩu lớn uy tín.</string>
 
     <string name="content_2">  - Sứ mệnh và tầm nhìn: Cung cấp các sản phẩm chất lượng mang nhiêu giá trị sử dụng cho thị trường, mang lại nguồn thu nhập và việc làm thêm cho mọi người đặc biệt là các mẹ bỉm sữa, sinh viên, dân văn phòng. Đóng góp trong việc phát triển kinh tế xã hội và đất nước.</string>

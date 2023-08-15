@@ -25,11 +25,11 @@ import com.example.app3do.features.product.product_detail.presenter.ProductDetai
 import com.example.app3do.features.product.product_detail.view.ProductDetailView;
 import com.example.app3do.models.cart.Cart;
 import com.example.app3do.models.product.DataProduct;
-import com.example.app3do.until.broadcast.BroadcastNotification;
-import com.example.app3do.until.broadcast.BroadcastUpdateCart;
-import com.example.app3do.until.broadcast.UpdateCart;
-import com.example.app3do.until.broadcast.UpdateNotification;
-import com.example.app3do.until.direction.Direction;
+import com.example.app3do.utils.broadcast.BroadcastNotification;
+import com.example.app3do.utils.broadcast.BroadcastUpdateCart;
+import com.example.app3do.utils.broadcast.UpdateCart;
+import com.example.app3do.utils.broadcast.UpdateNotification;
+import com.example.app3do.utils.direction.Direction;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.text.NumberFormat;

@@ -16,7 +16,7 @@ import com.example.app3do.features.personal_information.new_bank_personal_detail
 import com.example.app3do.features.personal_information.new_bank_personal_details.view.NewBankPersonalDetailsView;
 import com.example.app3do.features.layout.home.activity.HomeActivity;
 import com.example.app3do.models.personal.NewbankPersonal;
-import com.example.app3do.until.broadcast.BroadcastUpdatePersonal;
+import com.example.app3do.utils.broadcast.BroadcastUpdatePersonal;
 
 public class NewBankPersonalDetailsFragment extends BaseFragment implements NewBankPersonalDetailsView {
     NewBankPersonalDetailsPresenter presenter;

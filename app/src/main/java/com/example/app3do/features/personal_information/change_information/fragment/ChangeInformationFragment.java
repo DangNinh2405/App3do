@@ -3,17 +3,11 @@ package com.example.app3do.features.personal_information.change_information.frag
 import android.Manifest;
 import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.net.Uri;
-import android.os.Build;
-import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -24,7 +18,6 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -40,14 +33,10 @@ import com.example.app3do.features.personal_information.change_information.view.
 import com.example.app3do.models.personal.DataPersonal;
 import com.example.app3do.models.personal.DataUploadImage;
 import com.example.app3do.models.personal.UpdatePersonal;
-import com.example.app3do.until.broadcast.BroadcastUpdateProfile;
+import com.example.app3do.utils.broadcast.BroadcastUpdateProfile;
 
-import java.io.File;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
-import java.util.Objects;
 
 public class ChangeInformationFragment extends BaseFragment implements ChangeInformationView {
     private final String MALE = "Nam";

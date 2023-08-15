@@ -14,14 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.app3do.R;
 import com.example.app3do.base.BaseFragment;
 import com.example.app3do.constans.Constants;
-import com.example.app3do.custom.PostAdapter;
+import com.example.app3do.adapter.PostAdapter;
 import com.example.app3do.features.layout.home.activity.HomeActivity;
 import com.example.app3do.features.layout.personal.fragment.PersonalFragment;
 import com.example.app3do.features.post.post_category.presenter.PostCategoryPresenter;
 import com.example.app3do.features.post.post_category.view.PostCategoryView;
 import com.example.app3do.features.post.post_details.fragment.PostDetailsFragment;
 import com.example.app3do.models.post.DataPost;
-import com.example.app3do.until.direction.Direction;
+import com.example.app3do.utils.direction.Direction;
 
 import java.util.List;
 

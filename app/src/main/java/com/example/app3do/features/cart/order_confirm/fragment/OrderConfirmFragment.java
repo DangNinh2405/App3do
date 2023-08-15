@@ -16,15 +16,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.app3do.R;
 import com.example.app3do.base.BaseFragment;
 import com.example.app3do.constans.Constants;
-import com.example.app3do.custom.CartDetailAdapter;
+import com.example.app3do.adapter.CartDetailAdapter;
 import com.example.app3do.features.cart.order_confirm.presenter.OrderConfirmPresenter;
 import com.example.app3do.features.cart.order_confirm.view.OrderConfirmView;
 import com.example.app3do.features.layout.home.activity.HomeActivity;
 import com.example.app3do.models.cart.BodyCart;
 import com.example.app3do.models.cart.Order;
 import com.example.app3do.models.personal.AddressesPersonal;
-import com.example.app3do.until.broadcast.BroadcastUpdateCart;
-import com.example.app3do.until.broadcast.UpdateCart;
+import com.example.app3do.utils.broadcast.BroadcastUpdateCart;
 
 import java.text.NumberFormat;
 import java.util.Locale;

@@ -13,4 +13,6 @@
     <style name="CustomDatePicker" parent="Theme.AppCompat.Light.Dialog">
         <item name="android:datePickerMode">spinner</item>
     </style>
+
+
 </resources>

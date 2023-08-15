@@ -24,11 +24,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app3do.R;
 import com.example.app3do.base.BaseFragment;
-import com.example.app3do.custom.MemberMarketingAdapter;
+import com.example.app3do.adapter.MemberMarketingAdapter;
 import com.example.app3do.features.layout.home.activity.HomeActivity;
 import com.example.app3do.features.layout.marketing.presenter.MarketingPresenter;
 import com.example.app3do.features.layout.marketing.view.MarketingView;
-import com.example.app3do.models.marketing.MetaMarketing;
 import com.example.app3do.models.personal.DataPersonal;
 import com.example.app3do.models.report.PointReports;
 

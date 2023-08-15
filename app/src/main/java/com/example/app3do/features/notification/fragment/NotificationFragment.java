@@ -1,26 +1,24 @@
 package com.example.app3do.features.notification.fragment;
 
 import android.content.Intent;
-import android.os.Build;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app3do.R;
 import com.example.app3do.base.BaseFragment;
-import com.example.app3do.custom.NotificationAdapter;
+import com.example.app3do.adapter.NotificationAdapter;
 import com.example.app3do.features.layout.home.activity.HomeActivity;
 import com.example.app3do.features.notification.presenter.NotificationPresenter;
 import com.example.app3do.features.notification.view.NotificationView;
 import com.example.app3do.models.notification.DataNotification;
-import com.example.app3do.until.broadcast.BroadcastNotification;
+import com.example.app3do.utils.broadcast.BroadcastNotification;
 
 import java.util.List;
 

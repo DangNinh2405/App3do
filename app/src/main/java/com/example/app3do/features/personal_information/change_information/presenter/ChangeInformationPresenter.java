@@ -1,12 +1,8 @@
 package com.example.app3do.features.personal_information.change_information.presenter;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.net.Uri;
-import android.provider.MediaStore;
 import android.util.Log;
-
-import androidx.loader.content.CursorLoader;
 
 import com.example.app3do.base.BasePresenterT;
 import com.example.app3do.constans.Constants;
@@ -18,7 +14,7 @@ import com.example.app3do.models.personal.BodyPersonal;
 import com.example.app3do.models.personal.BodyUploadImage;
 import com.example.app3do.models.personal.DataPersonal;
 import com.example.app3do.models.personal.UpdatePersonal;
-import com.example.app3do.until.PathUtil;
+import com.example.app3do.utils.PathUtil;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 

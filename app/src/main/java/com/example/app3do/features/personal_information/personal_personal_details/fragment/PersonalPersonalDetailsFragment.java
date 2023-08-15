@@ -1,7 +1,6 @@
 package com.example.app3do.features.personal_information.personal_personal_details.fragment;
 
 import android.content.IntentFilter;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -12,16 +11,16 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.example.app3do.R;
 import com.example.app3do.base.BaseFragment;
-import com.example.app3do.constans.Constants;
+import com.example.app3do.features.account.change_password.fragment.ChangePasswordFragment;
 import com.example.app3do.features.layout.home.activity.HomeActivity;
-import com.example.app3do.features.notification.fragment.NotificationFragment;
 import com.example.app3do.features.personal_information.change_information.fragment.ChangeInformationFragment;
+import com.example.app3do.features.personal_information.change_referral_code.fragment.ReferralCodeFragment;
 import com.example.app3do.features.personal_information.personal_personal_details.presenter.PersonalPersonalDetailsPresenter;
 import com.example.app3do.features.personal_information.personal_personal_details.view.PersonalPersonalDetailsView;
 import com.example.app3do.models.personal.DataPersonal;
-import com.example.app3do.until.broadcast.BroadcastUpdateProfile;
-import com.example.app3do.until.broadcast.UpdateProfile;
-import com.example.app3do.until.direction.Direction;
+import com.example.app3do.utils.broadcast.BroadcastUpdateProfile;
+import com.example.app3do.utils.broadcast.UpdateProfile;
+import com.example.app3do.utils.direction.Direction;
 
 public class PersonalPersonalDetailsFragment extends BaseFragment implements PersonalPersonalDetailsView, UpdateProfile {
     PersonalPersonalDetailsPresenter presenter;
@@ -67,7 +66,6 @@ public class PersonalPersonalDetailsFragment extends BaseFragment implements Per
         txt_phone_number = view.findViewById(R.id.txt_phone_number);
         txt_address = view.findViewById(R.id.txt_address);
         lnl_information = view.findViewById(R.id.lnl_information);
-        btn_delete_account = view.findViewById(R.id.btn_delete_account);
         btn_password_change = view.findViewById(R.id.btn_password_change);
         btn_update_referral_code = view.findViewById(R.id.btn_update_referral_code);
         btn_information_change = view.findViewById(R.id.btn_information_change);
@@ -83,16 +81,12 @@ public class PersonalPersonalDetailsFragment extends BaseFragment implements Per
     }
 
     private void event(){
-        btn_delete_account.setOnClickListener( v -> {
-
-        });
-
         btn_password_change.setOnClickListener( v -> {
-
+            Direction.getInstance().directionToFragment(getParentFragmentManager(), R.id.frame_home, new ChangePasswordFragment(), null, "change_password");
         });
 
         btn_update_referral_code.setOnClickListener( v -> {
-
+            Direction.getInstance().directionToFragment(getParentFragmentManager(), R.id.frame_home, new ReferralCodeFragment(), null, "change_referral_code");
         });
 
         btn_information_change.setOnClickListener( v -> {

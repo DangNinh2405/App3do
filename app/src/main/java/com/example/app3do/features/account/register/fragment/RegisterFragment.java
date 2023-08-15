@@ -15,7 +15,7 @@ import com.example.app3do.features.account.register.presenter.RegisterPresenter;
 import com.example.app3do.features.account.register.view.RegisterView;
 import com.example.app3do.features.account.verify.fragment.VerifyFragment;
 import com.example.app3do.models.register.Register;
-import com.example.app3do.until.direction.Direction;
+import com.example.app3do.utils.direction.Direction;
 
 public class RegisterFragment extends BaseFragment implements RegisterView {
     RegisterPresenter presenter;

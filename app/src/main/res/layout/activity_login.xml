@@ -35,7 +35,7 @@
                 android:background="@drawable/custom_etxt_login"
                 android:fontFamily="@font/roboto_medium"
                 android:hint="Số điện thoại"
-                android:text="0367052757"
+                android:text=""
                 android:minHeight="48dp"
                 android:paddingLeft="24dp"
                 android:textColor="#213140"
@@ -43,7 +43,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:text="123456"
+                android:text=""
                 android:id="@+id/etxt_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -93,12 +93,14 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
                 android:src="@drawable/facebook_2x" />
 
             <ImageView
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/google_2x" />

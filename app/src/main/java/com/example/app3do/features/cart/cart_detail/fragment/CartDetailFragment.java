@@ -21,8 +21,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.app3do.R;
 import com.example.app3do.base.BaseFragment;
 import com.example.app3do.constans.Constants;
-import com.example.app3do.custom.AddressCartAdapter;
-import com.example.app3do.custom.CartDetailAdapter;
+import com.example.app3do.adapter.AddressCartAdapter;
+import com.example.app3do.adapter.CartDetailAdapter;
 import com.example.app3do.features.cart.cart_detail.presenter.CartDetailPresenter;
 import com.example.app3do.features.cart.cart_detail.view.CartDetailView;
 import com.example.app3do.features.cart.order_confirm.fragment.OrderConfirmFragment;
@@ -32,10 +32,10 @@ import com.example.app3do.models.cart.BodyCart;
 import com.example.app3do.models.cart.Cart;
 import com.example.app3do.models.personal.AddressesPersonal;
 import com.example.app3do.models.personal.BodyPersonal;
-import com.example.app3do.until.broadcast.BroadcastUpdateCart;
-import com.example.app3do.until.broadcast.BroadcastUpdatePersonal;
-import com.example.app3do.until.broadcast.UpdatePersonal;
-import com.example.app3do.until.direction.Direction;
+import com.example.app3do.utils.broadcast.BroadcastUpdateCart;
+import com.example.app3do.utils.broadcast.BroadcastUpdatePersonal;
+import com.example.app3do.utils.broadcast.UpdatePersonal;
+import com.example.app3do.utils.direction.Direction;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -313,11 +313,6 @@ public class CartDetailFragment extends BaseFragment implements CartDetailView, 
 
     private void eventAddressCartAdapter(AddressCartAdapter adapter) {
         adapter.setItemOnClickListener(new AddressCartAdapter.ItemOnClickListener() {
-            @Override
-            public void onEdit(AddressesPersonal address) {
-
-            }
-
             @Override
             public void onClear(AddressesPersonal address) {
                 presenter.deleteAddressPersonal(homeActivity.getAccessToken(), address.getId());

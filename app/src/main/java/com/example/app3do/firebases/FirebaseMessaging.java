@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 
 import com.example.app3do.R;
-import com.example.app3do.until.application.MyApplication;
+import com.example.app3do.utils.application.MyApplication;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 

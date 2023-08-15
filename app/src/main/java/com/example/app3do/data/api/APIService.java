@@ -43,7 +43,7 @@ public interface APIService {
     Call<BodyCategory> getListCategory();
 
     @GET("/api/products")
-    Call<BodyProduct> getListProductByCategoryId(@Query("category_id") int category_id, @Query("page") int page);
+    Call<BodyProduct> getListProductByCategoryId(@Query("category_id") int category_id, @Query("page_size") int page);
 
     @GET("/api/products")
     Call<BodyProduct> getListHotProduct(@Query("is_hot") int id_hot, @Query("page") int page);
@@ -90,8 +90,17 @@ public interface APIService {
     @GET("/api/posts")
     Call<JsonElement> getPosts(@Query("type") String type, @Query("access_token") String access_token, @Query("page") int page);
 
+    @GET("/api/settings/bank-accounts")
+    Call<JsonElement> getBanksAccount(@Query("access_token") String access_token);
+
+    @GET("/api/money-logs")
+    Call<JsonElement> getMoneyLogs(@Query("access_token") String access_token, @Query("page") int page, @Query("type") String type, @Query("size") int size);
+
     @POST("/api/cart")
     Call<JsonElement> updateProductInCart(@Query("access_token") String access_token, @Body RequestBody body);
+
+    @POST("/api/wallet/transfer")
+    Call<JsonElement> exchangePoints(@Query("access_token") String access_token, @Body RequestBody body);
 
     @FormUrlEncoded
     @POST("/api/auth/login")
@@ -134,8 +143,15 @@ public interface APIService {
     @PUT("/api/order/sub-orders/{id}")
     Call<JsonElement> putSubOrder(@Path("id") int id, @Query("access_token") String accessToken, @Body RequestBody order);
 
+    @PUT("/api/auth/me?with=banks,wallet,addresses")
+    Call<JsonElement> updatePassword(@Query("access_token") String accessToken, @Body RequestBody body);
+
     @PUT("/api/auth/me")
     Call<JsonElement> updateProfile(@Query("with") String with, @Query("access_token") String accessToken, @Body RequestBody body);
+
+    @PUT("/api/auth/me/referer-code")
+    Call<JsonElement> updateReferralCode(@Query("access_token") String accessToken, @Body RequestBody body);
+
 
     @Multipart
     @POST("/api/upload")

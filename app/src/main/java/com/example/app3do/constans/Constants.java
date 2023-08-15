@@ -17,4 +17,6 @@ public class Constants {
     public static final String PERSONAL = "PERSONAL";
     public static final int PAGE_1 = 1;
     public static final int PAGE_2 = 2;
+
+    public static final String ACCOUNT = "ACCOUNT";
 }

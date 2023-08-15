@@ -246,6 +246,7 @@
                         android:weightSum="2">
 
                         <Button
+                            android:id="@+id/btn_bank_accounts"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -257,6 +258,7 @@
                             android:textSize="12sp" />
 
                         <Button
+                            android:id="@+id/btn_history_wallet"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -315,17 +317,19 @@
                         android:weightSum="2">
 
                         <Button
+                            android:id="@+id/btn_exchange_points"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/custom_btn_exchange_information"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Nạp tiền"
+                            android:text="Đổi điểm"
                             android:textAllCaps="false"
                             android:textColor="#6057F5"
                             android:textSize="12sp" />
 
                         <Button
+                            android:id="@+id/btn_points_history"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -435,6 +439,7 @@
                 android:background="#EFEFEF" />
 
             <TextView
+                android:id="@+id/txt_log_out"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_regular"

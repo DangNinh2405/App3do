@@ -23,16 +23,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app3do.R;
 import com.example.app3do.base.BaseFragment;
-import com.example.app3do.custom.OrdersAdapter;
+import com.example.app3do.adapter.OrdersAdapter;
 import com.example.app3do.features.cart.cart_detail.fragment.CartDetailFragment;
 import com.example.app3do.features.layout.home.activity.HomeActivity;
 import com.example.app3do.features.order.system.presenter.SystemOrdersPresenter;
 import com.example.app3do.features.order.system.view.SystemOrdersView;
 import com.example.app3do.models.order.DataOrder;
-import com.example.app3do.until.broadcast.BroadcastSubOrder;
-import com.example.app3do.until.broadcast.BroadcastUpdateCart;
-import com.example.app3do.until.broadcast.UpdateSubOrders;
-import com.example.app3do.until.direction.Direction;
+import com.example.app3do.utils.broadcast.BroadcastSubOrder;
+import com.example.app3do.utils.broadcast.BroadcastUpdateCart;
+import com.example.app3do.utils.broadcast.UpdateSubOrders;
+import com.example.app3do.utils.direction.Direction;
 
 import java.util.Calendar;
 import java.util.List;

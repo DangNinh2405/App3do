@@ -1,6 +1,5 @@
 package com.example.app3do.features.personal_information.personal_details.fragment;
 
-import android.content.Intent;
 import android.content.IntentFilter;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,16 +12,13 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.bumptech.glide.Glide;
 import com.example.app3do.R;
 import com.example.app3do.base.BaseFragment;
-import com.example.app3do.constans.Constants;
-import com.example.app3do.custom.TablayoutPersonalAdapter;
+import com.example.app3do.adapter.TablayoutPersonalAdapter;
 import com.example.app3do.features.layout.home.activity.HomeActivity;
 import com.example.app3do.features.personal_information.personal_details.presenter.PersonalDetailsPresenter;
 import com.example.app3do.features.personal_information.personal_details.view.PersonalDetailsView;
 import com.example.app3do.models.personal.DataPersonal;
-import com.example.app3do.models.personal.UpdatePersonal;
-import com.example.app3do.until.broadcast.BroadcastUpdatePersonal;
-import com.example.app3do.until.broadcast.BroadcastUpdateProfile;
-import com.example.app3do.until.broadcast.UpdateProfile;
+import com.example.app3do.utils.broadcast.BroadcastUpdateProfile;
+import com.example.app3do.utils.broadcast.UpdateProfile;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 

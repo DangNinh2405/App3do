@@ -1,6 +1,11 @@
 package com.example.app3do.features.layout.personal.presenter;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import com.example.app3do.R;
 import com.example.app3do.base.BasePresenterT;
+import com.example.app3do.constans.Constants;
 import com.example.app3do.data.api.APIService;
 import com.example.app3do.data.api.BaseAPIClient;
 import com.example.app3do.data.api.HandleResponse;
@@ -35,5 +40,11 @@ public class PersonalPresenter extends BasePresenterT<PersonalView> {
         };
 
         response.callAPI();
+    }
+
+    public void clearDataShareReference(Context context){
+        SharedPreferences preferences = context.getSharedPreferences(String.valueOf(R.string.KEY_LOGIN_ACCOUNT), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.remove(Constants.ACCOUNT).apply();
     }
 }

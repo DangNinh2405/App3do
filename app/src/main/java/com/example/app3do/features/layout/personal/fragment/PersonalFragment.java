@@ -1,8 +1,19 @@
 package com.example.app3do.features.layout.personal.fragment;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Layout;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -11,23 +22,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.Glide;
 import com.example.app3do.R;
 import com.example.app3do.base.BaseFragment;
 import com.example.app3do.features.personal_information.app_information.fragment.AppInformationFragment;
+import com.example.app3do.features.personal_information.banks_account.fragment.BanksAccountFragment;
 import com.example.app3do.features.personal_information.contact_help.fragment.ContactHelpFragment;
+import com.example.app3do.features.personal_information.exchange_points.fragment.ExchangePointsFragment;
+import com.example.app3do.features.personal_information.points_history.fragment.PointsHistoryFragment;
 import com.example.app3do.features.post.post_category.fragment.PostCategoryFragment;
 import com.example.app3do.features.personal_information.personal_details.fragment.PersonalDetailsFragment;
 import com.example.app3do.features.layout.home.activity.HomeActivity;
 import com.example.app3do.features.layout.personal.presenter.PersonalPresenter;
+import com.example.app3do.features.personal_information.wallet_history.fragment.WalletHistoryFragment;
 import com.example.app3do.features.layout.personal.view.PersonalView;
 import com.example.app3do.models.personal.DataPersonal;
-import com.example.app3do.until.broadcast.BroadcastUpdateProfile;
-import com.example.app3do.until.broadcast.BroadcastUpdatePersonal;
-import com.example.app3do.until.broadcast.UpdatePersonal;
-import com.example.app3do.until.broadcast.UpdateProfile;
-import com.example.app3do.until.direction.Direction;
+import com.example.app3do.utils.broadcast.BroadcastUpdateProfile;
+import com.example.app3do.utils.broadcast.BroadcastUpdatePersonal;
+import com.example.app3do.utils.broadcast.UpdatePersonal;
+import com.example.app3do.utils.broadcast.UpdateProfile;
+import com.example.app3do.utils.direction.Direction;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -38,6 +54,7 @@ public class PersonalFragment extends BaseFragment implements PersonalView, Upda
     public final static String TYPE_VIDEO = "VIDEO";
     public final static String TYPE_ORIENTATION = "ORIENTATION";
     public final static String KEY = "KEY";
+    public final static String DATA_PERSONAL = "DATA_PERSONAL";
     Locale locale;
     BroadcastUpdatePersonal receiver = new BroadcastUpdatePersonal(this);
     BroadcastUpdateProfile updateProfile = new BroadcastUpdateProfile(this);
@@ -49,7 +66,9 @@ public class PersonalFragment extends BaseFragment implements PersonalView, Upda
     ProgressBar pg_level;
     DataPersonal personal;
     LinearLayout lnl_wallet_point;
-    TextView txt_user_name, txt_orientation, txt_video, txt_policy, txt_event_news, txt_app_information, txt_user_id, txt_current_level_commission, txt_next_level_commission, txt_owner_commission, txt_total_ord_amount, txt_personal_details, txt_material, txt_contact_help;
+    TextView txt_user_name, txt_log_out, txt_orientation, txt_video, txt_policy, txt_event_news, txt_app_information, txt_user_id, txt_current_level_commission, txt_next_level_commission, txt_owner_commission, txt_total_ord_amount, txt_personal_details, txt_material, txt_contact_help;
+    Button btn_bank_accounts, btn_history_wallet, btn_exchange_points, btn_points_history, btn_cancel, btn_log_out;
+    Dialog mDialog;
 
     @Override
     public int getLayoutId() {
@@ -111,6 +130,11 @@ public class PersonalFragment extends BaseFragment implements PersonalView, Upda
         txt_policy = view.findViewById(R.id.txt_policy);
         txt_orientation = view.findViewById(R.id.txt_orientation);
         txt_video = view.findViewById(R.id.txt_video);
+        btn_bank_accounts = view.findViewById(R.id.btn_bank_accounts);
+        btn_history_wallet = view.findViewById(R.id.btn_history_wallet);
+        btn_exchange_points = view.findViewById(R.id.btn_exchange_points);
+        btn_points_history = view.findViewById(R.id.btn_points_history);
+        txt_log_out = view.findViewById(R.id.txt_log_out);
     }
 
     private void initView() {
@@ -123,6 +147,18 @@ public class PersonalFragment extends BaseFragment implements PersonalView, Upda
         rltl_heaeder.getLayoutParams().width = (int) Math.round(width * 0.88405797101);
         pg_level.getLayoutParams().width = (int) Math.round(width * 0.92270531401);
         lnl_wallet_point.getLayoutParams().width = (int) Math.round(width * 0.92270531401);
+
+        mDialog = new Dialog(getContext());
+        mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        mDialog.setContentView(R.layout.custom_log_out);
+        mDialog.setCancelable(false);
+
+        Window window = mDialog.getWindow();
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        initDialog(mDialog);
+        eventDialog(mDialog);
     }
 
     private void event() {
@@ -153,6 +189,59 @@ public class PersonalFragment extends BaseFragment implements PersonalView, Upda
         txt_video.setOnClickListener( v -> {
             directionToFragment(TYPE_VIDEO, TYPE_VIDEO.toLowerCase());
         });
+
+        btn_bank_accounts.setOnClickListener( v -> {
+            Direction.getInstance().directionToFragment(getParentFragmentManager(), R.id.frame_home, new BanksAccountFragment(), null, "bank_accounts");
+        });
+
+        btn_history_wallet.setOnClickListener( v -> {
+            WalletHistoryFragment frament = new WalletHistoryFragment();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable(DATA_PERSONAL, personal);
+            frament.setArguments(bundle);
+
+            Direction.getInstance().directionToFragment(getParentFragmentManager(), R.id.frame_home, frament, null, "wallet_history");
+        });
+
+        btn_exchange_points.setOnClickListener( v -> {
+            Direction.getInstance().directionToFragment(getParentFragmentManager(), R.id.frame_home, new ExchangePointsFragment(), null, "exchange_points");
+        });
+
+        btn_points_history.setOnClickListener( v -> {
+            PointsHistoryFragment frament = new PointsHistoryFragment();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable(DATA_PERSONAL, personal);
+            frament.setArguments(bundle);
+
+            Direction.getInstance().directionToFragment(getParentFragmentManager(), R.id.frame_home, frament, null, "points_history");
+        });
+
+        txt_log_out.setOnClickListener( v -> {
+            mDialog.show();
+
+        });
+    }
+
+    private void initDialog(Dialog dialog){
+        btn_cancel = dialog.findViewById(R.id.btn_cancel);
+        btn_log_out = dialog.findViewById(R.id.btn_log_out);
+    }
+
+    private void eventDialog(Dialog dialog) {
+        btn_cancel.setOnClickListener( v -> {
+            dialog.cancel();
+        });
+
+        btn_log_out.setOnClickListener( v -> {
+            presenter.clearDataShareReference(homeActivity);
+            homeActivity.finish();
+        });
+    }
+
+    @Override
+    public void onDestroy() {
+        mDialog.cancel();
+        super.onDestroy();
     }
 
     private void directionToFragment(String key, String backStack) {
@@ -162,7 +251,6 @@ public class PersonalFragment extends BaseFragment implements PersonalView, Upda
         fragment.setArguments(bundle);
 
         Direction.getInstance().directionToFragment(getParentFragmentManager(), R.id.frame_home, fragment, null, backStack);
-
     }
 
     @Override

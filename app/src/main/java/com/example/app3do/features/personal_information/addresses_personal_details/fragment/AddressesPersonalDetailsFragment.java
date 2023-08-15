@@ -12,16 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app3do.R;
 import com.example.app3do.base.BaseFragment;
-import com.example.app3do.custom.AddressesPersonalAdapter;
+import com.example.app3do.adapter.AddressesPersonalAdapter;
 import com.example.app3do.features.personal_information.addresses_personal_details.presenter.AddressesPersonalDetailsPresenter;
 import com.example.app3do.features.personal_information.addresses_personal_details.view.AddressesPersonalDetailsView;
 import com.example.app3do.features.personal_information.new_address_personal_details.fragment.NewAddressPersonalDetailsFragment;
 import com.example.app3do.features.layout.home.activity.HomeActivity;
 import com.example.app3do.models.personal.AddressesPersonal;
 import com.example.app3do.models.personal.DataPersonal;
-import com.example.app3do.until.broadcast.BroadcastUpdatePersonal;
-import com.example.app3do.until.broadcast.UpdatePersonal;
-import com.example.app3do.until.direction.Direction;
+import com.example.app3do.utils.broadcast.BroadcastUpdatePersonal;
+import com.example.app3do.utils.broadcast.UpdatePersonal;
+import com.example.app3do.utils.direction.Direction;
 
 public class AddressesPersonalDetailsFragment extends BaseFragment implements AddressesPersonalDetailsView, UpdatePersonal {
     HomeActivity homeActivity;
@@ -84,17 +84,7 @@ public class AddressesPersonalDetailsFragment extends BaseFragment implements Ad
     }
 
     private void eventAdapter(AddressesPersonalAdapter addressAdapter) {
-        addressAdapter.setItemOnClickListener(new AddressesPersonalAdapter.ItemOnClickListener() {
-            @Override
-            public void onEdit(AddressesPersonal address) {
-                Toast.makeText(getContext(), address.getId() + ": Edit", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onClear(AddressesPersonal address) {
-                presenter.deleteAddressPersonal(homeActivity.getAccessToken(), address.getId());
-            }
-        });
+        addressAdapter.setItemOnClickListener(address -> presenter.deleteAddressPersonal(homeActivity.getAccessToken(), address.getId()));
     }
 
     private void event() {
